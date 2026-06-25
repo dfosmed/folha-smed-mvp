@@ -1,0 +1,114 @@
+[
+  {
+    "codigo": 10,
+    "descricao": "SINDICATO"
+  },
+  {
+    "codigo": 11,
+    "descricao": "PENSÃO"
+  },
+  {
+    "codigo": 39,
+    "descricao": "CAIXA"
+  },
+  {
+    "codigo": 84,
+    "descricao": "BIG CARD"
+  },
+  {
+    "codigo": 86,
+    "descricao": "BANCO BRASIL"
+  },
+  {
+    "codigo": 92,
+    "descricao": "COUNTRY"
+  },
+  {
+    "codigo": 124,
+    "descricao": "MINAS CLUBE"
+  },
+  {
+    "codigo": 125,
+    "descricao": "PARANA"
+  },
+  {
+    "codigo": 1276,
+    "descricao": "VALE TRANSPORTE"
+  },
+  {
+    "codigo": 1279,
+    "descricao": "SINSEM CLUBE"
+  },
+  {
+    "codigo": 1280,
+    "descricao": "SICOOB AC CR"
+  },
+  {
+    "codigo": 1284,
+    "descricao": "BC COOPERATIVO"
+  },
+  {
+    "codigo": 1292,
+    "descricao": "BRADESCO"
+  },
+  {
+    "codigo": 1293,
+    "descricao": "SANTANDER"
+  },
+  {
+    "codigo": 1294,
+    "descricao": "IRRF"
+  },
+  {
+    "codigo": 1298,
+    "descricao": "UP BRASIL"
+  },
+  {
+    "codigo": 1299,
+    "descricao": "NOTRE DAME"
+  },
+  {
+    "codigo": 1454,
+    "descricao": "IPREM LEI"
+  },
+  {
+    "codigo": 1455,
+    "descricao": "BC DAYCOVAL"
+  },
+  {
+    "codigo": 1457,
+    "descricao": "BC PAN"
+  },
+  {
+    "codigo": 1462,
+    "descricao": "PAM"
+  },
+  {
+    "codigo": 1463,
+    "descricao": "B. NIO"
+  },
+  {
+    "codigo": 1466,
+    "descricao": "DESC JUDICIAL"
+  },
+  {
+    "codigo": 1469,
+    "descricao": "BC MASTER"
+  },
+  {
+    "codigo": 1472,
+    "descricao": "SICREDI"
+  },
+  {
+    "codigo": 1473,
+    "descricao": "BR CARD"
+  },
+  {
+    "codigo": 1476,
+    "descricao": "CASH CARD"
+  },
+  {
+    "codigo": 1478,
+    "descricao": "IPREM"
+  }
+]

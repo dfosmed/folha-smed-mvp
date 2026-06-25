@@ -10,16 +10,19 @@ import src.extrator_pdf
 import src.classificador_rubricas
 import src.gerador_excel
 import src.gerador_contabilizacao
+import src.gerar_consignados
 
 importlib.reload(src.extrator_pdf)
 importlib.reload(src.classificador_rubricas)
 importlib.reload(src.gerador_excel)
 importlib.reload(src.gerador_contabilizacao)
+importlib.reload(src.gerar_consignados)
 
 from src.extrator_pdf import extrair_dados_pdf
 from src.classificador_rubricas import classificar_rubricas
 from src.gerador_excel import gerar_excel_extraido
 from src.gerador_contabilizacao import parse_and_fill_contabilizacao
+from src.gerar_consignados import gerar_consignados_excel
 
 # Garantir que as pastas existam
 os.makedirs("temp", exist_ok=True)
@@ -176,6 +179,9 @@ st.markdown("<p style='margin-bottom: 2rem;'>Faça upload do PDF consolidado da 
 uploaded_file = st.file_uploader("📥 Arraste ou selecione o PDF da folha", type=["pdf"])
 
 st.markdown("<br>", unsafe_allow_html=True)
+if 'processamento_concluido' not in st.session_state:
+    st.session_state['processamento_concluido'] = False
+
 if st.button("🚀 Iniciar Processamento", use_container_width=True):
     if uploaded_file is None:
         st.warning("Por favor, faça o upload de um arquivo PDF antes de processar.")
@@ -208,49 +214,31 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
                 qtd_pendencias = len(df_pendencias)
                 qtd_classificadas = qtd_linhas_extraidas - qtd_pendencias
                 
-                st.success("✅ Extração e Classificação concluídas com sucesso!")
-                
-                st.markdown("### 📊 Visão Geral")
-                col1, col2, col3, col4 = st.columns(4)
-                col1.metric("Páginas", qtd_paginas)
-                col2.metric("Total Linhas", qtd_linhas_extraidas)
-                col3.metric("Classificadas", qtd_classificadas)
-                col4.metric("Pendentes", qtd_pendencias)
-                
-                st.markdown("<hr style='margin: 2rem 0;'>", unsafe_allow_html=True)
-                st.markdown("### 🏷️ Classificação de Rubricas")
-                
-                if qtd_pendencias == 0:
-                    st.success("Todas as rubricas foram classificadas.")
-                else:
-                    st.warning(f"Existem {qtd_pendencias} rubricas pendentes de classificação.")
-                
-                with st.expander("Prévia das Rubricas Classificadas", expanded=True):
-                    st.dataframe(df_classificado, width="stretch")
-                    
-                with st.expander("Pendências", expanded=(qtd_pendencias > 0)):
-                    if qtd_pendencias > 0:
-                        st.dataframe(df_pendencias, width="stretch")
-                    else:
-                        st.info("Nenhuma pendência encontrada.")
+                # Salva métricas no state
+                st.session_state['metrics'] = {
+                    'paginas': qtd_paginas,
+                    'linhas': qtd_linhas_extraidas,
+                    'classificadas': qtd_classificadas,
+                    'pendentes': qtd_pendencias
+                }
+                st.session_state['df_classificado'] = df_classificado
+                st.session_state['df_pendencias'] = df_pendencias
                 
                 # Gera o arquivo Excel
                 with st.spinner("Gerando arquivo Excel..."):
                     excel_bytes = gerar_excel_extraido(df_classificado, df_original)
-                    
                     excel_filename = uploaded_file.name.replace('.pdf', '.PDF').replace('.PDF', '_classificado.xlsx')
                     excel_path = os.path.join("outputs", excel_filename)
-                    
-                    # Salva também na pasta outputs como log/backup
                     try:
                         with open(excel_path, "wb") as f:
                             f.write(excel_bytes)
-                    except PermissionError:
-                        st.warning(f"Aviso: Não foi possível salvar o arquivo '{excel_path}' na pasta 'outputs' porque ele está aberto no Excel. Mas você ainda pode baixá-lo pelo botão abaixo.")
                     except Exception as ex:
-                        st.warning(f"Aviso: Não foi possível salvar uma cópia em 'outputs': {str(ex)}")
+                        pass
+                    
+                    st.session_state['excel_bytes'] = excel_bytes
+                    st.session_state['excel_filename'] = excel_filename
                 
-                # Preparar Contabilização antes de mostrar os botões
+                # Preparar Contabilização
                 contabilizacao_sucesso = False
                 with st.spinner("Gerando arquivo de Contabilização..."):
                     try:
@@ -264,7 +252,6 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
                             modelo_source = 'modelo_contabilização.xlsx'
                             
                         contabilizacao_bytes = parse_and_fill_contabilizacao(df_resumo, modelo_source)
-                        
                         contabilizacao_filename = uploaded_file.name.replace('.pdf', '.PDF').replace('.PDF', '_contabilizacao.xlsx')
                         contabilizacao_path = os.path.join("outputs", contabilizacao_filename)
                         
@@ -272,44 +259,111 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
                             with open(contabilizacao_path, "wb") as f:
                                 f.write(contabilizacao_bytes)
                         except Exception as ex:
-                            st.warning(f"Aviso: Não foi possível salvar uma cópia em 'outputs': {str(ex)}")
+                            pass
                         
+                        st.session_state['contabilizacao_bytes'] = contabilizacao_bytes
+                        st.session_state['contabilizacao_filename'] = contabilizacao_filename
                         contabilizacao_sucesso = True
                     except Exception as e:
                         st.error(f"Erro ao gerar contabilização: {str(e)}")
+                        st.session_state['contabilizacao_bytes'] = None
                         
-                # Botões de Download Lado a Lado
-                st.markdown("<br>", unsafe_allow_html=True)
-                col_btn1, col_btn2 = st.columns(2)
+                # Preparar Consignados
+                consignados_sucesso = False
+                with st.spinner("Gerando arquivo de Consignados..."):
+                    try:
+                        consignados_bytes = gerar_consignados_excel(df_resumo)
+                        consignados_filename = uploaded_file.name.replace('.pdf', '.PDF').replace('.PDF', '_consignados.xlsx')
+                        consignados_path = os.path.join("outputs", consignados_filename)
+                        
+                        try:
+                            with open(consignados_path, "wb") as f:
+                                f.write(consignados_bytes)
+                        except Exception as ex:
+                            pass
+                        
+                        st.session_state['consignados_bytes'] = consignados_bytes
+                        st.session_state['consignados_filename'] = consignados_filename
+                        consignados_sucesso = True
+                    except Exception as e:
+                        st.error(f"Erro ao gerar consignados: {str(e)}")
+                        st.session_state['consignados_bytes'] = None
                 
-                with col_btn1:
-                    st.download_button(
-                        label="⬇️ Baixar Excel Completo",
-                        data=excel_bytes,
-                        file_name=excel_filename,
-                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                        use_container_width=True
-                    )
-                
-                with col_btn2:
-                    if contabilizacao_sucesso:
-                        st.download_button(
-                            label="⬇️ Baixar Contabilização",
-                            data=contabilizacao_bytes,
-                            file_name=contabilizacao_filename,
-                            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                            use_container_width=True
-                        )
-                    else:
-                        st.info("A contabilização não pôde ser gerada.")
+                st.session_state['processamento_concluido'] = True
                 
         except Exception as e:
             st.error(f"Ocorreu um erro no processamento: {str(e)}")
             
         finally:
-            # Tenta limpar o arquivo temporário
             try:
                 if os.path.exists(temp_pdf_path):
                     os.remove(temp_pdf_path)
             except:
                 pass
+
+# Exibição dos resultados e botões (Fora do bloco if st.button para persistir após download)
+if st.session_state.get('processamento_concluido'):
+    st.success("✅ Extração e Classificação concluídas com sucesso!")
+    
+    st.markdown("### 📊 Visão Geral")
+    m = st.session_state['metrics']
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Páginas", m['paginas'])
+    col2.metric("Total Linhas", m['linhas'])
+    col3.metric("Classificadas", m['classificadas'])
+    col4.metric("Pendentes", m['pendentes'])
+    
+    st.markdown("<hr style='margin: 2rem 0;'>", unsafe_allow_html=True)
+    st.markdown("### 🏷️ Classificação de Rubricas")
+    
+    qtd_pend = m['pendentes']
+    if qtd_pend == 0:
+        st.success("Todas as rubricas foram classificadas.")
+    else:
+        st.warning(f"Existem {qtd_pend} rubricas pendentes de classificação.")
+    
+    with st.expander("Prévia das Rubricas Classificadas", expanded=True):
+        st.dataframe(st.session_state['df_classificado'], width="stretch")
+        
+    with st.expander("Pendências", expanded=(qtd_pend > 0)):
+        if qtd_pend > 0:
+            st.dataframe(st.session_state['df_pendencias'], width="stretch")
+        else:
+            st.info("Nenhuma pendência encontrada.")
+
+    st.markdown("### 📥 Baixar Arquivos Gerados")
+    st.markdown("<br>", unsafe_allow_html=True)
+    col_btn1, col_btn2, col_btn3 = st.columns(3)
+    
+    with col_btn1:
+        st.download_button(
+            label="⬇️ Baixar Excel Completo",
+            data=st.session_state['excel_bytes'],
+            file_name=st.session_state['excel_filename'],
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            use_container_width=True
+        )
+    
+    with col_btn2:
+        if st.session_state.get('contabilizacao_bytes'):
+            st.download_button(
+                label="⬇️ Baixar Contabilização",
+                data=st.session_state['contabilizacao_bytes'],
+                file_name=st.session_state['contabilizacao_filename'],
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                use_container_width=True
+            )
+        else:
+            st.info("A contabilização não pôde ser gerada.")
+            
+    with col_btn3:
+        if st.session_state.get('consignados_bytes'):
+            st.download_button(
+                label="⬇️ Baixar Consignados",
+                data=st.session_state['consignados_bytes'],
+                file_name=st.session_state['consignados_filename'],
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                use_container_width=True
+            )
+        else:
+            st.info("Consignados não gerado.")
