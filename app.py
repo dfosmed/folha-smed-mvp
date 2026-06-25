@@ -208,7 +208,7 @@ uploaded_file = st.file_uploader("📥 Arraste ou selecione o PDF da folha", typ
 st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("### ⚙️ Configuração de Dotações")
-st.markdown("Marque abaixo quais dotações deseja aplicar para cada grupo. É possível selecionar mais de uma por linha.")
+st.markdown("Selecione qual dotação deseja aplicar para cada grupo na tabela abaixo.")
 
 if 'df_config_dotacoes' not in st.session_state:
     data = []
@@ -223,9 +223,7 @@ if 'df_config_dotacoes' not in st.session_state:
                 data.append({
                     "Centro de Custo": dc,
                     "Regime": dr,
-                    "DOTAÇÃO 25%": False,
-                    "DOTAÇÃO FUNDEB": False,
-                    "DOTAÇÃO EXTRA 25%": False
+                    "Dotação Aplicada": "DOTAÇÃO 25%"
                 })
     st.session_state['df_config_dotacoes'] = pd.DataFrame(data)
 
@@ -233,7 +231,16 @@ edited_df = st.data_editor(
     st.session_state['df_config_dotacoes'],
     hide_index=True,
     disabled=["Centro de Custo", "Regime"],
-    use_container_width=True
+    use_container_width=True,
+    column_config={
+        "Dotação Aplicada": st.column_config.SelectboxColumn(
+            "Dotação Aplicada",
+            help="Selecione a dotação para este bloco",
+            width="medium",
+            options=["DOTAÇÃO 25%", "DOTAÇÃO FUNDEB", "DOTAÇÃO EXTRA 25%"],
+            required=True
+        )
+    }
 )
 st.session_state['df_config_dotacoes'] = edited_df
 
@@ -320,13 +327,10 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
                         # Build config dict from dataframe
                         config_dotacoes_dict = {}
                         for _, row in st.session_state['df_config_dotacoes'].iterrows():
-                            selecionadas = []
-                            if row.get("DOTAÇÃO 25%"): selecionadas.append("DOTAÇÃO 25%")
-                            if row.get("DOTAÇÃO FUNDEB"): selecionadas.append("DOTAÇÃO FUNDEB")
-                            if row.get("DOTAÇÃO EXTRA 25%"): selecionadas.append("DOTAÇÃO EXTRA 25%")
+                            selecionada = row.get("Dotação Aplicada")
                             cc = str(row.get("Centro de Custo", "")).strip().upper()
                             rg = str(row.get("Regime", "")).strip().upper()
-                            config_dotacoes_dict[f"{cc}_{rg}"] = selecionadas
+                            config_dotacoes_dict[f"{cc}_{rg}"] = selecionada
                             
                         contabilizacao_bytes = parse_and_fill_contabilizacao(df_resumo, modelo_source, config_dotacoes_dict)
                         contabilizacao_filename = safe_filename.replace('.pdf', '.PDF').replace('.PDF', '_contabilizacao.xlsx')
