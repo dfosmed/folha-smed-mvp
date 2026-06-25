@@ -21,6 +21,8 @@ outputs/
 temp/
 *.pdf
 *.xlsx
+temp_*.py
+test_script.py
 
 # Logs
 logs/
