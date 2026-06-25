@@ -226,19 +226,16 @@ if 'dotacoes_keys' not in st.session_state:
 config_dotacoes_dict = {}
 
 with st.expander("📋 Abrir Painel de Dotações por Bloco", expanded=True):
-    col1, col2 = st.columns(2)
     keys = st.session_state['dotacoes_keys']
-    half = len(keys) // 2 + len(keys) % 2
     
     for i, (dc, dr) in enumerate(keys):
-        col = col1 if i < half else col2
         ss_key = f"dotacao_{dc}_{dr}"
         
         # Padrão
         if ss_key not in st.session_state:
             st.session_state[ss_key] = "DOTAÇÃO 25%"
             
-        selecao = col.selectbox(
+        selecao = st.selectbox(
             f"{dc} | {dr}",
             ["DOTAÇÃO 25%", "DOTAÇÃO FUNDEB", "DOTAÇÃO EXTRA 25%"],
             key=ss_key
