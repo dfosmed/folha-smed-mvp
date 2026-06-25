@@ -23,6 +23,8 @@ temp/
 *.xlsx
 temp_*.py
 test_script.py
+modelo_b64.txt
+gerar_base64.py
 
 # Logs
 logs/
