@@ -128,8 +128,11 @@ def normalize_key(text):
     text = re.sub(r'[^A-Z0-9]', '', text)
     return text
 
-def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo: str) -> bytes:
-    wb = openpyxl.load_workbook(path_modelo)
+def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo) -> bytes:
+    if isinstance(path_modelo, str):
+        wb = openpyxl.load_workbook(path_modelo)
+    else:
+        wb = openpyxl.load_workbook(io.BytesIO(path_modelo))
     sheet = wb.active
     
     # Precompute keys for block identification

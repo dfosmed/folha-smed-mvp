@@ -254,8 +254,16 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
                 contabilizacao_sucesso = False
                 with st.spinner("Gerando arquivo de Contabilização..."):
                     try:
+                        import base64
                         df_resumo = pd.read_excel(io.BytesIO(excel_bytes), sheet_name='Resumo Geral')
-                        contabilizacao_bytes = parse_and_fill_contabilizacao(df_resumo, 'modelo_contabilização.xlsx')
+                        
+                        modelo_b64 = os.getenv("MODELO_XLSX_B64")
+                        if modelo_b64:
+                            modelo_source = base64.b64decode(modelo_b64)
+                        else:
+                            modelo_source = 'modelo_contabilização.xlsx'
+                            
+                        contabilizacao_bytes = parse_and_fill_contabilizacao(df_resumo, modelo_source)
                         
                         contabilizacao_filename = uploaded_file.name.replace('.pdf', '.PDF').replace('.PDF', '_contabilizacao.xlsx')
                         contabilizacao_path = os.path.join("outputs", contabilizacao_filename)
