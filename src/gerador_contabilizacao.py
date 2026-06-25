@@ -176,11 +176,12 @@ def normalize_key(text):
     text = re.sub(r'[^A-Z0-9]', '', text)
     return text
 
-def get_dotacao_value(dotacoes_json, ccusto, regime, natureza_planilha, tipo_dotacao):
-    if dotacoes_json is None:
+def get_dotacao_value(dotacoes_json, ccusto, regime, natureza_planilha, tipos_dotacao):
+    if dotacoes_json is None or not tipos_dotacao:
         return None
         
     natureza_norm = normalize_key(natureza_planilha)
+    resultados = []
     
     # Encontrar no json iterando
     for row_data in dotacoes_json:
@@ -190,18 +191,23 @@ def get_dotacao_value(dotacoes_json, ccusto, regime, natureza_planilha, tipo_dot
         
         if r_ccusto == ccusto.strip().upper() and r_regime == regime.strip().upper():
             if normalize_key(r_desc) == natureza_norm:
-                # Encontrou a linha, agora acha a coluna
-                for col, val in row_data.items():
-                    if normalize_key(col) == normalize_key(tipo_dotacao):
-                        if val is None or (isinstance(val, float) and pd.isna(val)):
-                            return None
-                        # Check for string "nan" or "NaN"
-                        if str(val).strip().lower() == "nan":
-                            return None
-                        return str(val).strip()
+                # Encontrou a linha, agora acha as colunas
+                for tipo_dot in tipos_dotacao:
+                    tipo_norm = normalize_key(tipo_dot)
+                    for col, val in row_data.items():
+                        if normalize_key(col) == tipo_norm:
+                            if val is not None and not (isinstance(val, float) and pd.isna(val)):
+                                if str(val).strip().lower() != "nan":
+                                    resultados.append(str(val).strip())
+                break
+                
+    if resultados:
+        return " / ".join(resultados)
     return None
 
-def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, tipo_dotacao="DOTAÇÃO 25%") -> bytes:
+def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_dotacoes_dict=None) -> bytes:
+    if config_dotacoes_dict is None:
+        config_dotacoes_dict = {}
     if isinstance(path_modelo, str):
         wb = openpyxl.load_workbook(path_modelo)
     else:
@@ -299,7 +305,9 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, tipo_dot
                     d_regime = current_block_config.get("Dotacao_Regime")
                     
                     if d_ccusto and d_regime:
-                        nova_dotacao = get_dotacao_value(dotacoes_json, d_ccusto, d_regime, cell_val, tipo_dotacao)
+                        key = f"{d_ccusto.upper()}_{d_regime.upper()}"
+                        tipos_selec = config_dotacoes_dict.get(key, [])
+                        nova_dotacao = get_dotacao_value(dotacoes_json, d_ccusto, d_regime, cell_val, tipos_selec)
                         if nova_dotacao:
                             sheet.cell(row=row, column=3).value = nova_dotacao
                             
