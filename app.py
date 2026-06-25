@@ -208,11 +208,11 @@ uploaded_file = st.file_uploader("📥 Arraste ou selecione o PDF da folha", typ
 st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("### ⚙️ Configuração de Dotações")
-st.markdown("Selecione qual dotação deseja aplicar para cada grupo na tabela abaixo.")
+st.markdown("Selecione a dotação para cada grupo. O sistema salvará suas escolhas.")
 
-if 'df_config_dotacoes' not in st.session_state:
-    data = []
+if 'dotacoes_keys' not in st.session_state:
     seen = set()
+    keys = []
     for k, v in src.gerador_contabilizacao.CONFIG_BLOCOS.items():
         dc = v.get("Dotacao_CCusto")
         dr = v.get("Dotacao_Regime")
@@ -220,29 +220,30 @@ if 'df_config_dotacoes' not in st.session_state:
             comb = (dc, dr)
             if comb not in seen:
                 seen.add(comb)
-                data.append({
-                    "Centro de Custo": dc,
-                    "Regime": dr,
-                    "Dotação Aplicada": "DOTAÇÃO 25%"
-                })
-    st.session_state['df_config_dotacoes'] = pd.DataFrame(data)
+                keys.append(comb)
+    st.session_state['dotacoes_keys'] = keys
 
-edited_df = st.data_editor(
-    st.session_state['df_config_dotacoes'],
-    hide_index=True,
-    disabled=["Centro de Custo", "Regime"],
-    use_container_width=True,
-    column_config={
-        "Dotação Aplicada": st.column_config.SelectboxColumn(
-            "Dotação Aplicada",
-            help="Selecione a dotação para este bloco",
-            width="medium",
-            options=["DOTAÇÃO 25%", "DOTAÇÃO FUNDEB", "DOTAÇÃO EXTRA 25%"],
-            required=True
+config_dotacoes_dict = {}
+
+with st.expander("📋 Abrir Painel de Dotações por Bloco", expanded=True):
+    col1, col2 = st.columns(2)
+    keys = st.session_state['dotacoes_keys']
+    half = len(keys) // 2 + len(keys) % 2
+    
+    for i, (dc, dr) in enumerate(keys):
+        col = col1 if i < half else col2
+        ss_key = f"dotacao_{dc}_{dr}"
+        
+        # Padrão
+        if ss_key not in st.session_state:
+            st.session_state[ss_key] = "DOTAÇÃO 25%"
+            
+        selecao = col.selectbox(
+            f"{dc} | {dr}",
+            ["DOTAÇÃO 25%", "DOTAÇÃO FUNDEB", "DOTAÇÃO EXTRA 25%"],
+            key=ss_key
         )
-    }
-)
-st.session_state['df_config_dotacoes'] = edited_df
+        config_dotacoes_dict[f"{dc.strip().upper()}_{dr.strip().upper()}"] = selecao
 
 if 'processamento_concluido' not in st.session_state:
     st.session_state['processamento_concluido'] = False
@@ -324,14 +325,7 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
                         else:
                             modelo_source = 'modelo_contabilização.xlsx'
                             
-                        # Build config dict from dataframe
-                        config_dotacoes_dict = {}
-                        for _, row in st.session_state['df_config_dotacoes'].iterrows():
-                            selecionada = row.get("Dotação Aplicada")
-                            cc = str(row.get("Centro de Custo", "")).strip().upper()
-                            rg = str(row.get("Regime", "")).strip().upper()
-                            config_dotacoes_dict[f"{cc}_{rg}"] = selecionada
-                            
+                        # O config_dotacoes_dict já é gerado em tempo real no laço do UI acima.
                         contabilizacao_bytes = parse_and_fill_contabilizacao(df_resumo, modelo_source, config_dotacoes_dict)
                         contabilizacao_filename = safe_filename.replace('.pdf', '.PDF').replace('.PDF', '_contabilizacao.xlsx')
                         contabilizacao_path = os.path.join("outputs", contabilizacao_filename)
