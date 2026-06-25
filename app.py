@@ -1,9 +1,23 @@
 import os
 import io
+import re
+import logging
 import streamlit as st
 import pandas as pd
 import importlib
 from dotenv import load_dotenv
+
+# Setup basic logging (OWASP A09: Security Logging and Monitoring Failures)
+logging.basicConfig(
+    filename='app.log',
+    level=logging.ERROR,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+def secure_filename_custom(filename):
+    """Sanitize filename to prevent Path Traversal attacks."""
+    return re.sub(r'[^a-zA-Z0-9_.-]', '_', os.path.basename(filename))
 
 load_dotenv()
 import src.extrator_pdf
@@ -152,12 +166,20 @@ st.markdown("""
 # Authentication State
 if "authenticated" not in st.session_state:
     st.session_state["authenticated"] = False
+if "login_attempts" not in st.session_state:
+    st.session_state["login_attempts"] = 0
 
 # Login Flow
 if not st.session_state["authenticated"]:
     st.markdown("<h1 style='text-align: center; margin-top: 10vh;'>🔐 Acesso Restrito</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center;'>Por favor, insira a senha para acessar o Extrator de Folha SMED.</p>", unsafe_allow_html=True)
     
+    # Brute Force Protection (OWASP A07)
+    if st.session_state["login_attempts"] >= 5:
+        st.error("Muitas tentativas falhas. Acesso bloqueado temporariamente por segurança.")
+        logger.warning("Bloqueio temporário de segurança ativado devido a múltiplas falhas de login.")
+        st.stop()
+        
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         with st.form("login_form"):
@@ -165,10 +187,15 @@ if not st.session_state["authenticated"]:
             submit = st.form_submit_button("Acessar Sistema", use_container_width=True)
             
             if submit:
-                if senha == os.getenv("APP_PASSWORD"):
+                # Require env var to be properly set
+                env_pass = os.getenv("APP_PASSWORD")
+                if env_pass and senha == env_pass:
                     st.session_state["authenticated"] = True
+                    st.session_state["login_attempts"] = 0
                     st.rerun()
                 else:
+                    st.session_state["login_attempts"] += 1
+                    logger.warning(f"Tentativa de login falha. Total: {st.session_state['login_attempts']}")
                     st.error("Senha incorreta. Acesso negado.")
     st.stop()
 
@@ -186,8 +213,16 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
     if uploaded_file is None:
         st.warning("Por favor, faça o upload de um arquivo PDF antes de processar.")
     else:
+        # Prevenção DoS: Verifica tamanho do arquivo (Max 50MB)
+        if uploaded_file.size > 50 * 1024 * 1024:
+            st.error("O arquivo excedeu o limite de segurança de 50MB. Operação cancelada.")
+            st.stop()
+            
+        # Sanitização: Path Traversal Protection
+        safe_filename = secure_filename_custom(uploaded_file.name)
+        
         # Salva arquivo temporário
-        temp_pdf_path = os.path.join("temp", uploaded_file.name)
+        temp_pdf_path = os.path.join("temp", safe_filename)
         with open(temp_pdf_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
         
@@ -227,7 +262,7 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
                 # Gera o arquivo Excel
                 with st.spinner("Gerando arquivo Excel..."):
                     excel_bytes = gerar_excel_extraido(df_classificado, df_original)
-                    excel_filename = uploaded_file.name.replace('.pdf', '.PDF').replace('.PDF', '_classificado.xlsx')
+                    excel_filename = safe_filename.replace('.pdf', '.PDF').replace('.PDF', '_classificado.xlsx')
                     excel_path = os.path.join("outputs", excel_filename)
                     try:
                         with open(excel_path, "wb") as f:
@@ -252,7 +287,7 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
                             modelo_source = 'modelo_contabilização.xlsx'
                             
                         contabilizacao_bytes = parse_and_fill_contabilizacao(df_resumo, modelo_source)
-                        contabilizacao_filename = uploaded_file.name.replace('.pdf', '.PDF').replace('.PDF', '_contabilizacao.xlsx')
+                        contabilizacao_filename = safe_filename.replace('.pdf', '.PDF').replace('.PDF', '_contabilizacao.xlsx')
                         contabilizacao_path = os.path.join("outputs", contabilizacao_filename)
                         
                         try:
@@ -265,7 +300,8 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
                         st.session_state['contabilizacao_filename'] = contabilizacao_filename
                         contabilizacao_sucesso = True
                     except Exception as e:
-                        st.error(f"Erro ao gerar contabilização: {str(e)}")
+                        logger.error(f"Erro ao gerar contabilizacao: {str(e)}", exc_info=True)
+                        st.error("Ocorreu um erro interno ao gerar o arquivo de contabilização.")
                         st.session_state['contabilizacao_bytes'] = None
                         
                 # Preparar Consignados
@@ -273,7 +309,7 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
                 with st.spinner("Gerando arquivo de Consignados..."):
                     try:
                         consignados_bytes = gerar_consignados_excel(df_resumo)
-                        consignados_filename = uploaded_file.name.replace('.pdf', '.PDF').replace('.PDF', '_consignados.xlsx')
+                        consignados_filename = safe_filename.replace('.pdf', '.PDF').replace('.PDF', '_consignados.xlsx')
                         consignados_path = os.path.join("outputs", consignados_filename)
                         
                         try:
@@ -286,13 +322,15 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
                         st.session_state['consignados_filename'] = consignados_filename
                         consignados_sucesso = True
                     except Exception as e:
-                        st.error(f"Erro ao gerar consignados: {str(e)}")
+                        logger.error(f"Erro ao gerar consignados: {str(e)}", exc_info=True)
+                        st.error("Ocorreu um erro interno ao gerar o arquivo de consignados.")
                         st.session_state['consignados_bytes'] = None
                 
                 st.session_state['processamento_concluido'] = True
                 
         except Exception as e:
-            st.error(f"Ocorreu um erro no processamento: {str(e)}")
+            logger.error(f"Erro geral no processamento: {str(e)}", exc_info=True)
+            st.error("Ocorreu um erro inesperado no processamento do arquivo. Consulte o log do sistema ou contate o suporte.")
             
         finally:
             try:
