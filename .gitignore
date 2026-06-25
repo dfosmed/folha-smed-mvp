@@ -1,0 +1,31 @@
+# Arquivos do Python e Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+env.bak/
+venv.bak/
+
+# Variáveis de Ambiente e Arquivos Sensíveis
+.env
+.env.local
+.env.*.local
+.streamlit/secrets.toml
+
+# Pastas de Saída e Temporários do Projeto
+outputs/
+temp/
+*.pdf
+*.xlsx
+
+# Logs
+logs/
+*.log
+
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db

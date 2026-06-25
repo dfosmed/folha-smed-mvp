@@ -1,0 +1,1338 @@
+{
+  "2": {
+    "descricao": "VENCIMENTOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "3": {
+    "descricao": "VENCIMENTO HORA TRABALHA",
+    "natureza": "VENCIMENTOS"
+  },
+  "5": {
+    "descricao": "SUBSÍDIOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "8": {
+    "descricao": "INSALUBRIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "9": {
+    "descricao": "PERICULOSIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "11": {
+    "descricao": "VENCIMENTOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "12": {
+    "descricao": "SUBSÍDIO PREFEITO",
+    "natureza": "VENCIMENTOS"
+  },
+  "17": {
+    "descricao": "QUINQUÊNIOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "18": {
+    "descricao": "SUBSÍDIO VICE PREFEITO",
+    "natureza": "VENCIMENTOS"
+  },
+  "24": {
+    "descricao": "ADICIONAL NOTURNO",
+    "natureza": "VENCIMENTOS"
+  },
+  "29": {
+    "descricao": "VANTAGENS PESSOAIS",
+    "natureza": "VENCIMENTOS"
+  },
+  "30": {
+    "descricao": "DIFERENÇA DE SALÁRIO",
+    "natureza": "VENCIMENTOS"
+  },
+  "31": {
+    "descricao": "SUBSTITUIÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "34": {
+    "descricao": "DIFERENÇA MÊS ANTERIOR",
+    "natureza": "VENCIMENTOS"
+  },
+  "42": {
+    "descricao": "PRODUTIVIDADE FISCAL",
+    "natureza": "VENCIMENTOS"
+  },
+  "46": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "48": {
+    "descricao": "LICENÇA PRÊMIO PAGA",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "54": {
+    "descricao": "ADICIONAL NOTURNO HOSPIT",
+    "natureza": "VENCIMENTOS"
+  },
+  "57": {
+    "descricao": "REPOSIÇÃO DESC. INDEVIDO",
+    "natureza": "VENCIMENTOS"
+  },
+  "58": {
+    "descricao": "INSALUBRIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "59": {
+    "descricao": "13º SALÁRIO",
+    "natureza": "13º SALÁRIO"
+  },
+  "61": {
+    "descricao": "PROGRESSÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "66": {
+    "descricao": "DIFERENÇA DE QUINQUENIO",
+    "natureza": "VENCIMENTOS"
+  },
+  "69": {
+    "descricao": "AUXÍLIO NATALIDADE",
+    "natureza": "AUXÍLIO NATALIDADE"
+  },
+  "70": {
+    "descricao": "PÓS-GRADUAÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "74": {
+    "descricao": "RSR",
+    "natureza": "VENCIMENTOS"
+  },
+  "75": {
+    "descricao": "ADICIONAL DE DEDICAÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "77": {
+    "descricao": "BIÊNIO",
+    "natureza": "VENCIMENTOS"
+  },
+  "78": {
+    "descricao": "COMPLEMENTO DE PENSÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "84": {
+    "descricao": "QUINQUÊNIOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "92": {
+    "descricao": "REP. DESCONTO INDEVIDO - VALE TRANSPORTE",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "95": {
+    "descricao": "ABONO PERMANÊNCIA",
+    "natureza": "VENCIMENTOS"
+  },
+  "96": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "97": {
+    "descricao": "DIF. MÊS ANTERIOR",
+    "natureza": "VENCIMENTOS"
+  },
+  "123": {
+    "descricao": "ART. 1º LEI 5821/08 - AF",
+    "natureza": "VENCIMENTOS"
+  },
+  "125": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "182": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "193": {
+    "descricao": "PROGRESSÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "242": {
+    "descricao": "HORAS MESES ANTERIORES",
+    "natureza": "VENCIMENTOS"
+  },
+  "243": {
+    "descricao": "HORAS MÊS ANTERIOR",
+    "natureza": "VENCIMENTOS"
+  },
+  "245": {
+    "descricao": "DIF. PERICULOSIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "250": {
+    "descricao": "DIAS MESES ANTERIORES",
+    "natureza": "VENCIMENTOS"
+  },
+  "251": {
+    "descricao": "DIAS MÊS ANTERIOR",
+    "natureza": "VENCIMENTOS"
+  },
+  "270": {
+    "descricao": "HORAS EXTRAS",
+    "natureza": "HORA EXTRA"
+  },
+  "272": {
+    "descricao": "HORAS EXTRAS",
+    "natureza": "HORA EXTRA"
+  },
+  "274": {
+    "descricao": "DIF.GRAT. ANEXO XII, LC",
+    "natureza": "VENCIMENTOS"
+  },
+  "280": {
+    "descricao": "REAJUSTE RETROATIVO",
+    "natureza": "VENCIMENTOS"
+  },
+  "281": {
+    "descricao": "REAJUSTE RETROATIVO S/PR",
+    "natureza": "VENCIMENTOS"
+  },
+  "316": {
+    "descricao": "FÉRIAS 1/3",
+    "natureza": "FÉRIAS - ABONO CONSTITUCIONAL"
+  },
+  "335": {
+    "descricao": "SALÁRIO FAMÍLIA",
+    "natureza": "SALÁRIO FAMÍLIA"
+  },
+  "336": {
+    "descricao": "DIFERENÇA ABONO FAMILIA",
+    "natureza": "ABONO FAMÍLIA"
+  },
+  "341": {
+    "descricao": "DIF. QUINQUÊNIO 5%",
+    "natureza": "VENCIMENTOS"
+  },
+  "342": {
+    "descricao": "QUINQUÊNIOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "357": {
+    "descricao": "RESTITUIÇÃO DE FALTAS",
+    "natureza": "VENCIMENTOS"
+  },
+  "361": {
+    "descricao": "DIF. LICENÇA PRÊMIO",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "373": {
+    "descricao": "DIFERENÇA DE GRATIFICAÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "374": {
+    "descricao": "QUINQUÊNIOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "389": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "396": {
+    "descricao": "PARÁGRAFO 8º ARTIGO 31",
+    "natureza": "VENCIMENTOS"
+  },
+  "418": {
+    "descricao": "GRAT. ANEXO XII, LC 170",
+    "natureza": "VENCIMENTOS"
+  },
+  "429": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "463": {
+    "descricao": "GRATIFICAÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "464": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "468": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "480": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "500": {
+    "descricao": "ABONO FAMÍLIA",
+    "natureza": "ABONO FAMÍLIA"
+  },
+  "501": {
+    "descricao": "SALÁRIO FAMÍLIA",
+    "natureza": "SALÁRIO FAMÍLIA"
+  },
+  "512": {
+    "descricao": "FÉRIAS DIFERENÇA",
+    "natureza": "FÉRIAS - ABONO CONSTITUCIONAL"
+  },
+  "517": {
+    "descricao": "FÉRIAS PROPORCIONAIS 1/3",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "518": {
+    "descricao": "FÉRIAS VENCIDAS 1/3",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "519": {
+    "descricao": "FÉRIAS PROPORCIONAIS",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "520": {
+    "descricao": "FÉRIAS VENCIDAS",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "550": {
+    "descricao": "PARCELA FINAL (13ºSLR)",
+    "natureza": "13º SALÁRIO"
+  },
+  "558": {
+    "descricao": "SALDO SALÁRIO",
+    "natureza": "VENCIMENTOS"
+  },
+  "568": {
+    "descricao": "13º SALÁRIO",
+    "natureza": "13º SALÁRIO"
+  },
+  "610": {
+    "descricao": "CARGO COMISSIONADO",
+    "natureza": "VENCIMENTOS"
+  },
+  "611": {
+    "descricao": "CARGO COMISSIONADO",
+    "natureza": "VENCIMENTOS"
+  },
+  "613": {
+    "descricao": "QUINQUÊNIOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "614": {
+    "descricao": "QUINQUÊNIOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "616": {
+    "descricao": "QUINQUÊNIOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "617": {
+    "descricao": "QUINQUÊNIOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "630": {
+    "descricao": "PRÊMIO ART. 20, LC 199/1",
+    "natureza": "VENCIMENTOS"
+  },
+  "632": {
+    "descricao": "ADICIONAIS",
+    "natureza": "VENCIMENTOS"
+  },
+  "633": {
+    "descricao": "PRÊMIO ART. 17º LC 199/1",
+    "natureza": "VENCIMENTOS"
+  },
+  "634": {
+    "descricao": "PRÊMIO ART. 18º LC 199/1",
+    "natureza": "VENCIMENTOS"
+  },
+  "641": {
+    "descricao": "ART. 176, LEI Nº 3.583/9",
+    "natureza": "VENCIMENTOS"
+  },
+  "645": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "646": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "649": {
+    "descricao": "ADICIONAL NOTURNO",
+    "natureza": "VENCIMENTOS"
+  },
+  "654": {
+    "descricao": "CARGO COMISSIONADO",
+    "natureza": "VENCIMENTOS"
+  },
+  "655": {
+    "descricao": "DIF QUINQ. C.COMISSÃO 5%",
+    "natureza": "VENCIMENTOS"
+  },
+  "656": {
+    "descricao": "DIF QUINQ. C.COMISSÃO 10",
+    "natureza": "VENCIMENTOS"
+  },
+  "657": {
+    "descricao": "ACRÉSCIMO LEI 6.789/2017",
+    "natureza": "VENCIMENTOS"
+  },
+  "663": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "664": {
+    "descricao": "DIF PROG. AV. DESEMPENHO",
+    "natureza": "VENCIMENTOS"
+  },
+  "706": {
+    "descricao": "HORAS EXTRAS",
+    "natureza": "HORA EXTRA"
+  },
+  "751": {
+    "descricao": "HORAS EXTRAS",
+    "natureza": "HORA EXTRA"
+  },
+  "806": {
+    "descricao": "HORAS EXTRAS",
+    "natureza": "HORA EXTRA"
+  },
+  "824": {
+    "descricao": "ADICIONAL NOTURNO",
+    "natureza": "VENCIMENTOS"
+  },
+  "851": {
+    "descricao": "HORAS EXTRAS",
+    "natureza": "HORA EXTRA"
+  },
+  "900": {
+    "descricao": "AUXÍLIO DOENÇA",
+    "natureza": "AUXÍLIO DOENÇA"
+  },
+  "910": {
+    "descricao": "AFASTAMENTO MATERNIDADE",
+    "natureza": "AFASTAMENTO MATERNIDADE"
+  },
+  "911": {
+    "descricao": "AFASTAMENTO MATERNIDADE",
+    "natureza": "AFASTAMENTO MATERNIDADE"
+  },
+  "2075": {
+    "descricao": "DIF.ADICIONAL DEDICAÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "2182": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3373": {
+    "descricao": "QUINQUÊNIOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "3374": {
+    "descricao": "QUINQUÊNIOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "3375": {
+    "descricao": "IP VANT.P. A48/LC35 AUX",
+    "natureza": "VENCIMENTOS"
+  },
+  "3376": {
+    "descricao": "RSR VANT. P. A48/LC35 AU",
+    "natureza": "VENCIMENTOS"
+  },
+  "3379": {
+    "descricao": "MÉDIA INSALUBRIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "3380": {
+    "descricao": "MEDIAS INSALUB FERIAS VE",
+    "natureza": "VENCIMENTOS"
+  },
+  "3381": {
+    "descricao": "MÉDIA INSALUBRIDADE",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3382": {
+    "descricao": "MÉDIA INSALUBRIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "3385": {
+    "descricao": "MEDIA AD NOT HOSP FER-PR",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3386": {
+    "descricao": "MEDIA AD NOT HOSP 13 SAL",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3388": {
+    "descricao": "PARÁGRAFO 8º ARTIGO 31",
+    "natureza": "VENCIMENTOS"
+  },
+  "3389": {
+    "descricao": "PÓS-GRADUAÇÃO AUX DOENCA",
+    "natureza": "VENCIMENTOS"
+  },
+  "3390": {
+    "descricao": "INSALUBRIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "3393": {
+    "descricao": "PERICULOSIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "3394": {
+    "descricao": "MÉDIA ADICIONAL NOTURNO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3396": {
+    "descricao": "BENEFÍCIO SOCIAL",
+    "natureza": ""
+  },
+  "3398": {
+    "descricao": "MEDIA H EXTRAS 50%- FP R",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3401": {
+    "descricao": "MEDIA H EXTRAS - 100% FP",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3403": {
+    "descricao": "PARÁGRAFO 8º ARTIGO 31",
+    "natureza": "VENCIMENTOS"
+  },
+  "3407": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3415": {
+    "descricao": "MEDIA DIF. GRATIF 13 SAL",
+    "natureza": "VENCIMENTOS"
+  },
+  "3417": {
+    "descricao": "PRODUTIVIDADE FISCAL",
+    "natureza": "VENCIMENTOS"
+  },
+  "3418": {
+    "descricao": "ADICIONAL DE DEDICAÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3419": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3423": {
+    "descricao": "GRATIF FISCAL (GCT) AUX",
+    "natureza": "VENCIMENTOS"
+  },
+  "3427": {
+    "descricao": "MÉDIA PERICULOSIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "3433": {
+    "descricao": "SEM REMUNERAÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3438": {
+    "descricao": "LICENÇA PREMIO (RESCISAO",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3443": {
+    "descricao": "GRAT. ART. 73, LC 230/20",
+    "natureza": "VENCIMENTOS"
+  },
+  "3445": {
+    "descricao": "ABONO PERMANÊNCIA",
+    "natureza": "VENCIMENTOS"
+  },
+  "3453": {
+    "descricao": "MEDIA GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3454": {
+    "descricao": "MÉDIA GRATIFICAÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3476": {
+    "descricao": "MEDIA GRAT. ANEXO XII, L",
+    "natureza": "VENCIMENTOS"
+  },
+  "3478": {
+    "descricao": "MÉDIA GRATIFICAÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3480": {
+    "descricao": "MÉDIA GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3481": {
+    "descricao": "MÉDIA GRATIFICAÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3482": {
+    "descricao": "MÉDIA GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3483": {
+    "descricao": "MEDIA PRÊMIO ART. 20, LC",
+    "natureza": "VENCIMENTOS"
+  },
+  "3484": {
+    "descricao": "MEDIA PRÊMIO ART. 17º LC",
+    "natureza": "VENCIMENTOS"
+  },
+  "3485": {
+    "descricao": "MEDIA PRÊMIO ART. 18º LC",
+    "natureza": "VENCIMENTOS"
+  },
+  "3488": {
+    "descricao": "MEDIA ADIC NOTURNO HE 10",
+    "natureza": "VENCIMENTOS"
+  },
+  "3487": {
+    "descricao": "MÉDIA GRATIFICAÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3492": {
+    "descricao": "MÉDIA ADICIONAL NOTURNO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3494": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3506": {
+    "descricao": "MEDIA §8º, A.31 L.COMP.1",
+    "natureza": "VENCIMENTOS"
+  },
+  "3507": {
+    "descricao": "MEDIA §8º, A.31 L.COMP.1",
+    "natureza": "FÉRIAS - ABONO CONSTITUCIONAL"
+  },
+  "3508": {
+    "descricao": "MED. §8º, AR.31 L. C. 17",
+    "natureza": "VENCIMENTOS"
+  },
+  "3509": {
+    "descricao": "MÉDIA SUBSTITUIÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3513": {
+    "descricao": "MEDIA 8º, A.31 L.COMP.17",
+    "natureza": "VENCIMENTOS"
+  },
+  "3529": {
+    "descricao": "MEDIA DIF. INSALUBRIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "3530": {
+    "descricao": "MEDIA DIF. INSALUBRIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "3536": {
+    "descricao": "MEDIA DIF. PERICULOSIDAD",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3537": {
+    "descricao": "MEDIA DIF. PERICULOSIDAD",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3550": {
+    "descricao": "MEDIA GRAT.ART.73,LC 230",
+    "natureza": "VENCIMENTOS"
+  },
+  "3555": {
+    "descricao": "MEDIA GRAT.A. XII, LC 17",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3561": {
+    "descricao": "MEDIA GR.CPAD-LEI Nº 656",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3564": {
+    "descricao": "MÉDIA GRATIFICAÇÕES",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3565": {
+    "descricao": "MÉDIA GRATIFICAÇÕES",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3566": {
+    "descricao": "MÉDIA GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3570": {
+    "descricao": "MÉDIA GRATIFICAÇÕES",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3571": {
+    "descricao": "MÉDIA GRATIFICAÇÕES",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3572": {
+    "descricao": "MÉDIA GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3576": {
+    "descricao": "MÉDIA GRATIF. FISCAL",
+    "natureza": "VENCIMENTOS"
+  },
+  "3579": {
+    "descricao": "MEDIA §8º A.31 LC 170(M.",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3580": {
+    "descricao": "MEDIA §8º A.31 LC 170(M.",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3581": {
+    "descricao": "MEDIA §8º A.31 LC 170(M.",
+    "natureza": "VENCIMENTOS"
+  },
+  "3590": {
+    "descricao": "DIF. §8, ART.31 L.COMP.1",
+    "natureza": "VENCIMENTOS"
+  },
+  "3577": {
+    "descricao": "MÉDIA GRATIF. FISCAL",
+    "natureza": "VENCIMENTOS"
+  },
+  "3578": {
+    "descricao": "MEDIA §8º ART31 LC 170-M",
+    "natureza": "VENCIMENTOS"
+  },
+  "3603": {
+    "descricao": "DIFERENÇA 1/3 DE FÉRIAS",
+    "natureza": "FÉRIAS - ABONO CONSTITUCIONAL"
+  },
+  "3604": {
+    "descricao": "DEFERENÇA DE FÉRIAS",
+    "natureza": "VENCIMENTOS"
+  },
+  "3611": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "HORA EXTRA"
+  },
+  "3613": {
+    "descricao": "MÉDIA HORAS EXTRAS - 100",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3615": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "VENCIMENTOS"
+  },
+  "3616": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3617": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3618": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3619": {
+    "descricao": "MÉDIAS HORAS EXTRAS",
+    "natureza": "HORA EXTRA"
+  },
+  "3620": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "VENCIMENTOS"
+  },
+  "3621": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3622": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "VENCIMENTOS"
+  },
+  "3623": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "VENCIMENTOS"
+  },
+  "3625": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "VENCIMENTOS"
+  },
+  "3626": {
+    "descricao": "MEDIA H. EXTRAS M. ANT-5",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3627": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3628": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3630": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "VENCIMENTOS"
+  },
+  "3631": {
+    "descricao": "MÉDIA HORAS EXTRAS",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3640": {
+    "descricao": "MÉDIA GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3644": {
+    "descricao": "MEDIA DIF.GRAT A XII, LC",
+    "natureza": "VENCIMENTOS"
+  },
+  "3662": {
+    "descricao": "MEDIA HORA EXTRA MÊSES A",
+    "natureza": "FÉRIAS - ABONO CONSTITUCIONAL"
+  },
+  "3663": {
+    "descricao": "MÉDIA HORA EXTRA MÊSES A",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3684": {
+    "descricao": "LICENÇA ARTIGO. 139 LC 204",
+    "natureza": "LICENÇA SAÚDE"
+  },
+  "3690": {
+    "descricao": "DIF. PROG. POR TITULOS",
+    "natureza": "VENCIMENTOS"
+  },
+  "3697": {
+    "descricao": "ABONO LEI 7.377/2022",
+    "natureza": "VENCIMENTOS"
+  },
+  "3698": {
+    "descricao": "RETROATIVO ABONO LEI 7.3",
+    "natureza": "VENCIMENTOS"
+  },
+  "3700": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3703": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3705": {
+    "descricao": "MÉDIA GRATIFICAÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3706": {
+    "descricao": "DIF. CARGA HORARIA",
+    "natureza": "VENCIMENTOS"
+  },
+  "3709": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3710": {
+    "descricao": "PARÁGRAFO 8º ARTIGO 31",
+    "natureza": "VENCIMENTOS"
+  },
+  "3713": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3714": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3721": {
+    "descricao": "DIF. PRÊMIO ART. 20 LC 1",
+    "natureza": "VENCIMENTOS"
+  },
+  "3726": {
+    "descricao": "DIF. QUINQUÊNIO 10% RESC",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3727": {
+    "descricao": "LEI N. 7.583",
+    "natureza": "VENCIMENTOS"
+  },
+  "3749": {
+    "descricao": "MEDIA GRAT. CPAD-LEI Nº",
+    "natureza": "FÉRIAS - ABONO CONSTITUCIONAL"
+  },
+  "3753": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3754": {
+    "descricao": "MED GR CPSPA L.6560 A(20",
+    "natureza": "VENCIMENTOS"
+  },
+  "3767": {
+    "descricao": "MÉDIA ADICIONAL NOTURNO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3768": {
+    "descricao": "MEDIA ADICIONAL NOTURNO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3769": {
+    "descricao": "MÉDIA ADICIONAL NOTURNO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3770": {
+    "descricao": "FÉRIAS",
+    "natureza": "FÉRIAS - ABONO CONSTITUCIONAL"
+  },
+  "3780": {
+    "descricao": "DIFERENÇA 1/3 FÉRIAS",
+    "natureza": "FÉRIAS - ABONO CONSTITUCIONAL"
+  },
+  "3787": {
+    "descricao": "MEDIA GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3788": {
+    "descricao": "ART176 LEI 3583/92(MES A",
+    "natureza": "VENCIMENTOS"
+  },
+  "3801": {
+    "descricao": "MEDIA DIF GRAT ATEN CID",
+    "natureza": "VENCIMENTOS"
+  },
+  "3802": {
+    "descricao": "DIF GRATIF CENTRAL ATEND",
+    "natureza": "VENCIMENTOS"
+  },
+  "3803": {
+    "descricao": "MEDIA GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3804": {
+    "descricao": "MÉDIA GRATIFICAÇÃO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3807": {
+    "descricao": "MED DIF GRAT ART73 LC230",
+    "natureza": "VENCIMENTOS"
+  },
+  "3808": {
+    "descricao": "DIFERENÇAS CARGO COMISSIONADO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3809": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3811": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3816": {
+    "descricao": "DIF. RETROATIVO QUINQUÊN",
+    "natureza": "VENCIMENTOS"
+  },
+  "3817": {
+    "descricao": "DIF. RETROATIVO QUINQUÊN",
+    "natureza": "VENCIMENTOS"
+  },
+  "3818": {
+    "descricao": "PROMOÇÕES FUNCIONAIS",
+    "natureza": "VENCIMENTOS"
+  },
+  "3852": {
+    "descricao": "ARTIGO 1º LEI N. 7.564",
+    "natureza": "VENCIMENTOS"
+  },
+  "3857": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3868": {
+    "descricao": "MÉDIA PERICULOSIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "3869": {
+    "descricao": "MÉDIA PERICULOSIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "3870": {
+    "descricao": "MÉDIA PERICULOSIDADE",
+    "natureza": "VENCIMENTOS"
+  },
+  "3871": {
+    "descricao": "13° PISO LEI 7.583 17/10",
+    "natureza": "13º SALÁRIO"
+  },
+  "3873": {
+    "descricao": "AUXILIO DOENCA ABONO L 7",
+    "natureza": "VENCIMENTOS"
+  },
+  "3874": {
+    "descricao": "MÉDIAS FÉRIAS",
+    "natureza": "VENCIMENTOS"
+  },
+  "3878": {
+    "descricao": "MEDIA GRAT.LEI6285-T.ENF",
+    "natureza": "VENCIMENTOS"
+  },
+  "3883": {
+    "descricao": "MÉDIA GRAT FISCAL (GCT)",
+    "natureza": "VENCIMENTOS"
+  },
+  "3891": {
+    "descricao": "GRATIFICAÇÕES",
+    "natureza": "VENCIMENTOS"
+  },
+  "3892": {
+    "descricao": "MEDIA H EXTRAS 100%- 13",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3896": {
+    "descricao": "MÉDIA ADICIONAL NOTURNO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3897": {
+    "descricao": "MÉDIA ADICIONAL NOTURNO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3902": {
+    "descricao": "AFAST.MATERNIDADE PRORRO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3906": {
+    "descricao": "MEDIA DIF. PERICULOSIDAD",
+    "natureza": "VENCIMENTOS"
+  },
+  "3908": {
+    "descricao": "COMISSÃO CADA LE 331",
+    "natureza": "VENCIMENTOS"
+  },
+  "3907": {
+    "descricao": "DIF. §8, ART.31 L.COMP.1",
+    "natureza": "VENCIMENTOS"
+  },
+  "3914": {
+    "descricao": "GRAT LEI6560-COM.II (FER",
+    "natureza": "VENCIMENTOS"
+  },
+  "3919": {
+    "descricao": "DIF 13° SALARIO ADIANTAM",
+    "natureza": "VENCIMENTOS"
+  },
+  "3921": {
+    "descricao": "HORA EXTRA 100% (COMPLEM",
+    "natureza": "VENCIMENTOS"
+  },
+  "3923": {
+    "descricao": "MED.H EXTRA 50% COMP13SA",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3924": {
+    "descricao": "MED H EXTRA COMP 50% FP",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3926": {
+    "descricao": "DIFERENÇA LICENÇA PRÉMIO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3929": {
+    "descricao": "MED.H EXTRA 100% COMP13S",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3930": {
+    "descricao": "MED H EXTRA COMP 100% FP",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3932": {
+    "descricao": "DIFERENCA DE FERIAS PREV",
+    "natureza": "FÉRIAS - ABONO CONSTITUCIONAL"
+  },
+  "3933": {
+    "descricao": "DIFERENCA 13ª C/PREV",
+    "natureza": "VENCIMENTOS"
+  },
+  "3934": {
+    "descricao": "DIFERENCA 13º S/PREV",
+    "natureza": "VENCIMENTOS"
+  },
+  "3935": {
+    "descricao": "MED. GRATIFICAÇÃO FISCAL",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3936": {
+    "descricao": "DIF IFF ART 1º LEI 7564/",
+    "natureza": "VENCIMENTOS"
+  },
+  "3939": {
+    "descricao": "ADIC. NOT. HE 100% DIA M",
+    "natureza": "HORA EXTRA"
+  },
+  "3941": {
+    "descricao": "SUBSÍDIOS CEDIDO ESTADO",
+    "natureza": "VENCIMENTOS"
+  },
+  "3942": {
+    "descricao": "MED. G.CENT. CID. (T2016",
+    "natureza": "VENCIMENTOS"
+  },
+  "3943": {
+    "descricao": "DIF. SALÁRIO FAMÍLIA RES",
+    "natureza": "OP EXTRA"
+  },
+  "101": {
+    "descricao": "PAM-PROG.ASSIST.ME",
+    "natureza": "PAM"
+  },
+  "115": {
+    "descricao": "SERVIÇOS MÉDICOS",
+    "natureza": "PAM"
+  },
+  "132": {
+    "descricao": "DEPENDENTES PAM",
+    "natureza": "PAM"
+  },
+  "104": {
+    "descricao": "BIG CARD",
+    "natureza": "BIG CARD"
+  },
+  "134": {
+    "descricao": "COUNTRY CLUB",
+    "natureza": "COUNTRY"
+  },
+  "136": {
+    "descricao": "CAIXA ECONOMICA FE",
+    "natureza": "CAIXA"
+  },
+  "160": {
+    "descricao": "CAIXA ECONOMICA FE",
+    "natureza": "CAIXA"
+  },
+  "257": {
+    "descricao": "CAIXA ECONOMICA FE",
+    "natureza": "CAIXA"
+  },
+  "142": {
+    "descricao": "MENSALIDADE SINDIC",
+    "natureza": "SINDICATO"
+  },
+  "147": {
+    "descricao": "BANCO DO BRASIL 1",
+    "natureza": "BANCO BRASIL"
+  },
+  "149": {
+    "descricao": "BANCO DO BRASIL 2",
+    "natureza": "BANCO BRASIL"
+  },
+  "255": {
+    "descricao": "BANCO DO BRASIL 3",
+    "natureza": "BANCO BRASIL"
+  },
+  "176": {
+    "descricao": "CONVÊNIO MINAS CLU",
+    "natureza": "MINAS CLUBE"
+  },
+  "188": {
+    "descricao": "DESCONTOS JUDICIAI",
+    "natureza": "DESC JUDICIAL"
+  },
+  "3855": {
+    "descricao": "DESCONTO JUDICIAL",
+    "natureza": "DESC JUDICIAL"
+  },
+  "232": {
+    "descricao": "BANCO PARANA 1",
+    "natureza": "PARANA"
+  },
+  "262": {
+    "descricao": "BANCO PARANA 2",
+    "natureza": "PARANA"
+  },
+  "263": {
+    "descricao": "BANCO PARANA 3",
+    "natureza": "PARANA"
+  },
+  "266": {
+    "descricao": "SINSEM CLUBE",
+    "natureza": "SINSEM CLUBE"
+  },
+  "277": {
+    "descricao": "BANCO SICOOB AC CR",
+    "natureza": "SICOOB AC CR"
+  },
+  "309": {
+    "descricao": "BANCO SANTANDER 1",
+    "natureza": "SANTANDER"
+  },
+  "310": {
+    "descricao": "BANCO SANTANDER 2",
+    "natureza": "SANTANDER"
+  },
+  "311": {
+    "descricao": "BANCO SANTANDER 3",
+    "natureza": "SANTANDER"
+  },
+  "315": {
+    "descricao": "B.NIO M.PAGAMENTO-",
+    "natureza": "B. NIO"
+  },
+  "423": {
+    "descricao": "BANCO COOPERATIVO",
+    "natureza": "BC COOPERATIVO"
+  },
+  "424": {
+    "descricao": "BANCO COOPERATIVO",
+    "natureza": "BC COOPERATIVO"
+  },
+  "425": {
+    "descricao": "BANCO COOPERATIVO",
+    "natureza": "BC COOPERATIVO"
+  },
+  "441": {
+    "descricao": "BANCO BRADESCO 1",
+    "natureza": "BRADESCO"
+  },
+  "447": {
+    "descricao": "NOTRE DAME INTERME",
+    "natureza": "NOTRE DAME"
+  },
+  "448": {
+    "descricao": "UP BRASIL POLICARD",
+    "natureza": "UP BRASIL"
+  },
+  "470": {
+    "descricao": "PENSÃO SOBRE MÍNIM",
+    "natureza": "PENSÃO"
+  },
+  "482": {
+    "descricao": "PENSÃO VENCIMENTO",
+    "natureza": "PENSÃO"
+  },
+  "662": {
+    "descricao": "PENSÃO S/ SAL. LÍQ",
+    "natureza": "PENSÃO"
+  },
+  "3671": {
+    "descricao": "PENSÃO SOBRE MÍNIM",
+    "natureza": "PENSÃO"
+  },
+  "529": {
+    "descricao": "IRRF (13oSLR)",
+    "natureza": "IRRF"
+  },
+  "531": {
+    "descricao": "IRRF",
+    "natureza": "IRRF"
+  },
+  "552": {
+    "descricao": "IPREM (13ºSLR)",
+    "natureza": "IPREM"
+  },
+  "554": {
+    "descricao": "IPREM",
+    "natureza": "IPREM"
+  },
+  "154": {
+    "descricao": "VALE TRANSPORTE MÊ",
+    "natureza": "VALE TRANSPORTE"
+  },
+  "559": {
+    "descricao": "VALE TRANSPORTE",
+    "natureza": "VALE TRANSPORTE"
+  },
+  "3759": {
+    "descricao": "BANCO DAYCOVAL SA",
+    "natureza": "BC DAYCOVAL"
+  },
+  "3760": {
+    "descricao": "BANCO DAYCOVAL SA",
+    "natureza": "BC DAYCOVAL"
+  },
+  "3781": {
+    "descricao": "IPREM - LEI 316/2023",
+    "natureza": "IPREM LEI 316/2023"
+  },
+  "3782": {
+    "descricao": "IPREM LEI 316/2023 13º",
+    "natureza": "IPREM LEI 316/2023"
+  },
+  "3784": {
+    "descricao": "BANCO PAN 01",
+    "natureza": "BC PAN"
+  },
+  "3785": {
+    "descricao": "BANCO PAN 02",
+    "natureza": "BC PAN"
+  },
+  "3786": {
+    "descricao": "BANCO PAN 03",
+    "natureza": "BC PAN"
+  },
+  "3882": {
+    "descricao": "BANCO MASTER (CART",
+    "natureza": "BC MASTER"
+  },
+  "3886": {
+    "descricao": "BRCARD (CARTAO DE",
+    "natureza": "BR CARD"
+  },
+  "3887": {
+    "descricao": "SICRED 1",
+    "natureza": "SICREDI"
+  },
+  "3909": {
+    "descricao": "CASH CARD (CARTAO",
+    "natureza": "CASH CARD"
+  },
+  "526": {
+    "descricao": "INSS (13º SLR)",
+    "natureza": "INSS PF"
+  },
+  "528": {
+    "descricao": "INSS",
+    "natureza": "INSS PF"
+  },
+  "546": {
+    "descricao": "PARCELA ANT.(13ºSL",
+    "natureza": "PARCELA ANT. 13º"
+  },
+  "148": {
+    "descricao": "RESSARCIMENTO",
+    "natureza": "RESSARCIMENTO"
+  },
+  "748": {
+    "descricao": "RESSARCIMENTO",
+    "natureza": "RESSARCIMENTO"
+  },
+  "652": {
+    "descricao": "DEDUÇÃO ART. 37, X",
+    "natureza": "DEDUÇÃO ART. 37, X"
+  },
+  "268": {
+    "descricao": "DIFERENÇA CARGA HO",
+    "natureza": "DIFERENÇA CARGA HORÁRIA"
+  },
+  "253": {
+    "descricao": "DESCONTO DIAS",
+    "natureza": "DESCONTO DIAS/HORAS"
+  },
+  "952": {
+    "descricao": "FALTAS",
+    "natureza": "FALTAS/FALTAS HORAS"
+  },
+  "956": {
+    "descricao": "FALTAS HRS.",
+    "natureza": "FALTAS/FALTAS HORAS"
+  },
+  "957": {
+    "descricao": "FALTAS MÊS ANTERIO",
+    "natureza": "FALTAS/FALTAS HORAS"
+  },
+  "1952": {
+    "descricao": "FALTAS (RESCISAO)",
+    "natureza": "FALTAS/FALTAS HORAS"
+  },
+  "3560": {
+    "descricao": "MEDIA GR.CPAD-LEI Nº 656",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3397": {
+    "descricao": "MEDIA H EXTRAS 50%- FV R",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3949": {
+    "descricao": "DIFERENÇA DE SALÁRIO RES",
+    "natureza": "VENCIMENTOS"
+  }
+}

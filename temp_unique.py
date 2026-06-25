@@ -1,0 +1,11 @@
+import pandas as pd
+xls2 = pd.ExcelFile('outputs/SMED - C. Custo e Regime (5)_classificado.xlsx')
+df2 = pd.read_excel(xls2, 'Resumo Geral')
+print("Unique C.Custo:")
+print(df2['C.Custo'].unique())
+print("\nUnique Regime:")
+print(df2['Regime'].unique())
+print("\nUnique Grupo:")
+print(df2['Grupo'].unique())
+print("\nUnique Natureza:")
+print(df2['Natureza'].unique()[:20])
