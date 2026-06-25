@@ -206,6 +206,12 @@ st.markdown("<p style='margin-bottom: 2rem;'>Faça upload do PDF consolidado da 
 uploaded_file = st.file_uploader("📥 Arraste ou selecione o PDF da folha", type=["pdf"])
 
 st.markdown("<br>", unsafe_allow_html=True)
+
+tipo_dotacao = st.selectbox(
+    "Selecione a Dotação a ser aplicada na Contabilização:",
+    ["DOTAÇÃO 25%", "DOTAÇÃO FUNDEB", "DOTAÇÃO EXTRA 25%"]
+)
+
 if 'processamento_concluido' not in st.session_state:
     st.session_state['processamento_concluido'] = False
 
@@ -286,7 +292,7 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
                         else:
                             modelo_source = 'modelo_contabilização.xlsx'
                             
-                        contabilizacao_bytes = parse_and_fill_contabilizacao(df_resumo, modelo_source)
+                        contabilizacao_bytes = parse_and_fill_contabilizacao(df_resumo, modelo_source, tipo_dotacao)
                         contabilizacao_filename = safe_filename.replace('.pdf', '.PDF').replace('.PDF', '_contabilizacao.xlsx')
                         contabilizacao_path = os.path.join("outputs", contabilizacao_filename)
                         
