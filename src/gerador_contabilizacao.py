@@ -258,11 +258,17 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
             dotacao_atual = sheet.cell(row=row, column=3).value
             manter_dotacao = False
             
-            # Força o NÃO EMPENHAR para rubricas específicas que sempre o utilizam
+            # Força o NÃO EMPENHAR e OP EXTRA para rubricas específicas que sempre o utilizam
             rubricas_nao_empenhar = [
                 "PARCELAANT13", "RESSARCIMENTO", "DEDUCAOART37X", 
                 "DIFERENCACARGAHORARIA", "DESCONTODIASHORAS", "FALTASFALTASHORAS"
             ]
+            rubricas_op_extra = [
+                "SALARIOFAMILIAINSSCONTR",
+                "AFASTMATERNIDADEINSSCONTR",
+                "AFASTMATERNIDADESALMATERN"
+            ]
+            
             if norm_cell in rubricas_nao_empenhar:
                 # Trata erro de merged cell
                 if type(sheet.cell(row=row, column=3)).__name__ != 'MergedCell':
@@ -274,7 +280,17 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
                         sheet.cell(row=row, column=3).font = new_font
                 manter_dotacao = True
                 
-            if dotacao_atual and ("NǟO EMPENHAR" in str(dotacao_atual).upper() or "NAO EMPENHAR" in str(dotacao_atual).upper() or "NÃO EMPENHAR" in str(dotacao_atual).upper()):
+            if norm_cell in rubricas_op_extra:
+                if type(sheet.cell(row=row, column=3)).__name__ != 'MergedCell':
+                    sheet.cell(row=row, column=3).value = "OP EXTRA"
+                    import copy
+                    if sheet.cell(row=row, column=3).font:
+                        new_font = copy.copy(sheet.cell(row=row, column=3).font)
+                        new_font.bold = True
+                        sheet.cell(row=row, column=3).font = new_font
+                manter_dotacao = True
+                
+            if dotacao_atual and ("NǟO EMPENHAR" in str(dotacao_atual).upper() or "NAO EMPENHAR" in str(dotacao_atual).upper() or "NÃO EMPENHAR" in str(dotacao_atual).upper() or "OP EXTRA" in str(dotacao_atual).upper()):
                 manter_dotacao = True
                 
             # Look for Folha Bruta
@@ -361,6 +377,7 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
                         
                 is_special_dynamic = nova_dotacao and nova_dotacao.upper() in ["OP EXTRA"]
                 is_special_rubrica = norm_cell in rubricas_nao_empenhar
+                is_special_rubrica_op = norm_cell in rubricas_op_extra
                 
                 def set_dotacao(val, bold=False):
                     if type(sheet.cell(row=row, column=3)).__name__ != 'MergedCell':
@@ -377,6 +394,8 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
                     
                     if is_special_rubrica:
                         pass # Já forçado no início do bloco
+                    elif is_special_rubrica_op:
+                        pass # Já forçado no início do bloco como OP EXTRA
                     elif is_special_dynamic:
                         set_dotacao(nova_dotacao, bold=True)
                     elif nova_dotacao:
@@ -387,6 +406,8 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
                     sheet.cell(row=row, column=2).value = None
                     if is_special_rubrica:
                         pass # Já forçado no início do bloco
+                    elif is_special_rubrica_op:
+                        set_dotacao(None, bold=False) # Se for zero, tira o OP EXTRA
                     elif is_special_dynamic:
                         set_dotacao(nova_dotacao, bold=True)
                     else:
