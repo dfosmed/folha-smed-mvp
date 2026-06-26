@@ -18,7 +18,7 @@
     {
         "C. CUSTO": "OUTROS SMED",
         "REGIME": "EFETIVO",
-        "DESCRIÇÃO": "AUXÍLIO DOENÇA",
+        "DESCRIÇÃO": "AUXILIO DOENÇA (LICENÇA SAÚDE)",
         "DOTAÇÃO 25%": "721-15000000000",
         "DOTAÇÃO FUNDEB": "721-15000000000",
         "DOTAÇÃO EXTRA 25%": "721-15000000000"
@@ -250,7 +250,7 @@
     {
         "C. CUSTO": "EDUCAÇÃO ESPECIAL 30%",
         "REGIME": "EFETIVO",
-        "DESCRIÇÃO": "AUXÍLIO DOENÇA",
+        "DESCRIÇÃO": "AUXILIO DOENÇA (LICENÇA SAÚDE)",
         "DOTAÇÃO 25%": "478-15000001001",
         "DOTAÇÃO FUNDEB": "608-15400000000",
         "DOTAÇÃO EXTRA 25%": null
@@ -370,7 +370,7 @@
     {
         "C. CUSTO": "EDUCAÇÃO ESPECIAL 70%",
         "REGIME": "EFETIVO",
-        "DESCRIÇÃO": "AUXÍLIO DOENÇA",
+        "DESCRIÇÃO": "AUXILIO DOENÇA (LICENÇA SAÚDE)",
         "DOTAÇÃO 25%": "478-15000001001",
         "DOTAÇÃO FUNDEB": "614-15400001070",
         "DOTAÇÃO EXTRA 25%": null
@@ -490,7 +490,7 @@
     {
         "C. CUSTO": "ED.INFANTIL CRECHE 30%",
         "REGIME": "EFETIVO",
-        "DESCRIÇÃO": "AUXÍLIO DOENÇA",
+        "DESCRIÇÃO": "AUXILIO DOENÇA (LICENÇA SAÚDE)",
         "DOTAÇÃO 25%": "380-15000001001",
         "DOTAÇÃO FUNDEB": "563-15400000000",
         "DOTAÇÃO EXTRA 25%": null
@@ -610,7 +610,7 @@
     {
         "C. CUSTO": "ED.INFANTIL CRECHE 70%",
         "REGIME": "EFETIVO",
-        "DESCRIÇÃO": "AUXÍLIO DOENÇA",
+        "DESCRIÇÃO": "AUXILIO DOENÇA (LICENÇA SAÚDE)",
         "DOTAÇÃO 25%": "380-15000001001",
         "DOTAÇÃO FUNDEB": "569-15400001070",
         "DOTAÇÃO EXTRA 25%": null
@@ -730,7 +730,7 @@
     {
         "C. CUSTO": "ED.INFANTIL PRE ESCOLA 30%",
         "REGIME": "EFETIVO",
-        "DESCRIÇÃO": "AUXÍLIO DOENÇA",
+        "DESCRIÇÃO": "AUXILIO DOENÇA (LICENÇA SAÚDE)",
         "DOTAÇÃO 25%": "380-15000001001",
         "DOTAÇÃO FUNDEB": "563-15400000000",
         "DOTAÇÃO EXTRA 25%": null
@@ -850,7 +850,7 @@
     {
         "C. CUSTO": "ED.INFANTIL PRE ESCOLA 70%",
         "REGIME": "EFETIVO",
-        "DESCRIÇÃO": "AUXÍLIO DOENÇA",
+        "DESCRIÇÃO": "AUXILIO DOENÇA (LICENÇA SAÚDE)",
         "DOTAÇÃO 25%": "380-15000001001",
         "DOTAÇÃO FUNDEB": "569-15400001070",
         "DOTAÇÃO EXTRA 25%": null
@@ -970,7 +970,7 @@
     {
         "C. CUSTO": "EJA 70%",
         "REGIME": "EFETIVO",
-        "DESCRIÇÃO": "AUXÍLIO DOENÇA",
+        "DESCRIÇÃO": "AUXILIO DOENÇA (LICENÇA SAÚDE)",
         "DOTAÇÃO 25%": "429-15000001001",
         "DOTAÇÃO FUNDEB": "593-15400001070",
         "DOTAÇÃO EXTRA 25%": null
@@ -1090,7 +1090,7 @@
     {
         "C. CUSTO": "ENSINO FUNDAMENTAL 30%",
         "REGIME": "EFETIVO",
-        "DESCRIÇÃO": "AUXÍLIO DOENÇA",
+        "DESCRIÇÃO": "AUXILIO DOENÇA (LICENÇA SAÚDE)",
         "DOTAÇÃO 25%": "331-15000001001",
         "DOTAÇÃO FUNDEB": "542-15400000000",
         "DOTAÇÃO EXTRA 25%": null
@@ -1210,7 +1210,7 @@
     {
         "C. CUSTO": "ED.FUNDAMENTAL 70%",
         "REGIME": "EFETIVO",
-        "DESCRIÇÃO": "AUXÍLIO DOENÇA",
+        "DESCRIÇÃO": "AUXILIO DOENÇA (LICENÇA SAÚDE)",
         "DOTAÇÃO 25%": "331-15000001001",
         "DOTAÇÃO FUNDEB": "548-15400001070",
         "DOTAÇÃO EXTRA 25%": null
@@ -1386,7 +1386,7 @@
     {
         "C. CUSTO": "RESTANTE DA SMED 30%",
         "REGIME": "EFETIVO",
-        "DESCRIÇÃO": "AUXÍLIO DOENÇA",
+        "DESCRIÇÃO": "AUXILIO DOENÇA (LICENÇA SAÚDE)",
         "DOTAÇÃO 25%": "293-15000001001",
         "DOTAÇÃO FUNDEB": "527-15400000000",
         "DOTAÇÃO EXTRA 25%": null
@@ -1716,7 +1716,7 @@
         "REGIME": "CONTRATADO",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
         "DOTAÇÃO 25%": "334-15000001001",
-        "DOTAÇÃO FUNDEB": "545-15400000000",
+        "DOTAÇÃO FUNDEB": "547-15400001070",
         "DOTAÇÃO EXTRA 25%": null
     },
     {
@@ -1724,7 +1724,7 @@
         "REGIME": "COMISSIONADOS",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
         "DOTAÇÃO 25%": "334-15000001001",
-        "DOTAÇÃO FUNDEB": "545-15400000000",
+        "DOTAÇÃO FUNDEB": "548-15400001070",
         "DOTAÇÃO EXTRA 25%": null
     },
     {
