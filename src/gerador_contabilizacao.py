@@ -261,7 +261,7 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
                 manter_dotacao = True
                 
             # Look for Folha Bruta
-            if "FOLHABRUTA" in norm_cell or "BRUTOSUBISDIO" in norm_cell or "BRUTOSUBSIDIO" in norm_cell or ("BRUTO" in norm_cell and "SUBSIDIO" in norm_cell) or ("SUBSIDIO" in norm_cell and "SECRETARIO" in norm_cell):
+            if "FOLHABRUTA" in norm_cell or "BRUTOSUBISDIO" in norm_cell or "BRUTOSUBSIDIO" in norm_cell or ("BRUTO" in norm_cell and "SECRETARIO" in norm_cell):
                 if not folha_bruta_row and "EMPENHO" not in norm_cell:
                     folha_bruta_row = row
                     
