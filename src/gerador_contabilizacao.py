@@ -261,7 +261,7 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
                 manter_dotacao = True
                 
             # Look for Folha Bruta
-            if "FOLHABRUTA" in norm_cell or "BRUTOSUBISDIO" in norm_cell or "BRUTOSUBSIDIO" in norm_cell:
+            if "FOLHABRUTA" in norm_cell or "BRUTOSUBISDIO" in norm_cell or "BRUTOSUBSIDIO" in norm_cell or ("BRUTO" in norm_cell and "SUBSIDIO" in norm_cell) or ("SUBSIDIO" in norm_cell and "SECRETARIO" in norm_cell):
                 if not folha_bruta_row and "EMPENHO" not in norm_cell:
                     folha_bruta_row = row
                     val_folha = current_block_df[current_block_df['Grupo'] == 'Provento']['Valor'].sum()
@@ -272,7 +272,7 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
                     continue
             
             # Look for block end / Folha Bruta para Empenho
-            if "EMPENHO" in norm_cell and "FOLHA" in norm_cell and "BRUTA" in norm_cell:
+            if "EMPENHO" in norm_cell and (("FOLHA" in norm_cell and "BRUTA" in norm_cell) or "SUBSIDIO" in norm_cell):
                 unmapped_df = current_block_df[(current_block_df['Grupo'] == 'Desconto') & (~current_block_df['Natureza'].isin(mapped_naturezas_in_block))]
                 sum_unmapped = unmapped_df['Valor'].sum()
                 if sum_unmapped > 0:
