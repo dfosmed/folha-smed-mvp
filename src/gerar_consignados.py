@@ -52,7 +52,7 @@ def gerar_consignados_excel(df):
         "RESTANTE DA SMED 30%": {
             "prefix": "098 - ",
             "grupos": {
-                "EFETIVOS": ['015 - EFETIVO/COMISSIONADO', '019 - PROFISSIONAL EDUCACAO ( EST.)'],
+                "EFETIVOS": ['002 - EFETIVO','015 - EFETIVO/COMISSIONADO', '019 - PROFISSIONAL EDUCACAO ( EST.)'],
                 "CONTRATADOS": ['009 - CONTRATO', '020 - PROFISSIONAL EDUCACAO (CONT.)'],
                 "COMISSIONADOS/CONTR.": ['003 - COMISSIONADO']
             }
