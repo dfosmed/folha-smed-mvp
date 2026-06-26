@@ -295,12 +295,52 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
             
             # Look for block end / Folha Bruta para Empenho
             if "EMPENHO" in norm_cell and (("FOLHA" in norm_cell and "BRUTA" in norm_cell) or "SUBSIDIO" in norm_cell):
+                if current_block_config.get("Dotacao_Regime") == "AGENTE POLÍTICO":
+                    val_folha_empenho = current_block_df[current_block_df['Natureza'] == 'VENCIMENTOS']['Valor'].sum()
+                else:
+                    val_folha_empenho = current_block_df[current_block_df['Grupo'] == 'Provento']['Valor'].sum()
+                    
                 unmapped_df = current_block_df[(current_block_df['Grupo'] == 'Desconto') & (~current_block_df['Natureza'].isin(mapped_naturezas_in_block))]
                 sum_unmapped = unmapped_df['Valor'].sum()
-                if sum_unmapped > 0:
+                
+                if val_folha_empenho > 0 and sum_unmapped > 0:
                     sheet.cell(row=row, column=4).value = sum_unmapped
                 else:
                     sheet.cell(row=row, column=4).value = None
+                    
+                nova_dotacao_empenho = None
+                if dotacoes_json is not None:
+                    d_ccusto = current_block_config.get("Dotacao_CCusto")
+                    d_regime = current_block_config.get("Dotacao_Regime")
+                    if d_ccusto and d_regime:
+                        key = f"{d_ccusto.upper()}_{d_regime.upper()}"
+                        tipo_selecionado = config_dotacoes_dict.get(key, None)
+                        # Busca do JSON a rubrica "FOLHA BRUTA PARA EMPENHO"
+                        nova_dotacao_empenho = get_dotacao_value(dotacoes_json, d_ccusto, d_regime, "FOLHA BRUTA PARA EMPENHO", tipo_selecionado)
+
+                is_special_dynamic_empenho = nova_dotacao_empenho and nova_dotacao_empenho.upper() in ["OP EXTRA", "NÃO EMPENHAR", "NAO EMPENHAR"]
+                
+                def set_dotacao_empenho(val, bold=False):
+                    if type(sheet.cell(row=row, column=3)).__name__ != 'MergedCell':
+                        sheet.cell(row=row, column=3).value = val
+                        import copy
+                        if sheet.cell(row=row, column=3).font:
+                            new_font = copy.copy(sheet.cell(row=row, column=3).font)
+                            new_font.bold = bold
+                            sheet.cell(row=row, column=3).font = new_font
+                
+                if val_folha_empenho > 0 and sum_unmapped > 0:
+                    if is_special_dynamic_empenho:
+                        set_dotacao_empenho(nova_dotacao_empenho, bold=True)
+                    elif nova_dotacao_empenho:
+                        set_dotacao_empenho(nova_dotacao_empenho, bold=False)
+                    else:
+                        set_dotacao_empenho(None, bold=False)
+                else:
+                    if is_special_dynamic_empenho:
+                        set_dotacao_empenho(nova_dotacao_empenho, bold=True)
+                    else:
+                        set_dotacao_empenho(None, bold=False)
                 
                 in_block = False
                 continue
