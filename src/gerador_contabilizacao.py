@@ -55,79 +55,79 @@ CONFIG_BLOCOS = {
     "ED.FUNDAMENTAL 70% - COMISSIONADO- CREDOR 543": {
         "C.Custo": "093 - ENSINO FUNDAMENTAL 70%",
         "Regimes": ["003 - COMISSIONADO"],
-        "Dotacao_CCusto": "ENS. FUNDAM. 70%",
+        "Dotacao_CCusto": "ED.FUNDAMENTAL 70%",
         "Dotacao_Regime": "COMISSIONADOS"
     },
     "ED.FUNDAMENTAL 70%  - EFETIVOS - CREDOR 105": {
         "C.Custo": "093 - ENSINO FUNDAMENTAL 70%",
         "Regimes": ["002 - EFETIVO", "015 - EFETIVO/COMISSIONADO", "019 - PROFISSIONAL EDUCACAO ( EST.)", "030 - PROF EDUCACAO EST./COMISSIONADO", "031 - PROF EDUCACAO EST./COMISSIONADO (CARREIRA)", "032 - EFETIVO/COMISSIONADO (CARREIRA)"],
-        "Dotacao_CCusto": "ENS. FUNDAM. 70%",
+        "Dotacao_CCusto": "ED.FUNDAMENTAL 70%",
         "Dotacao_Regime": "EFETIVO"
     },
     "ED.FUNDAMENTAL 70% - CONTRATADOS - CREDOR 543": {
         "C.Custo": "093 - ENSINO FUNDAMENTAL 70%",
         "Regimes": ["009 - CONTRATO", "020 - PROFISSIONAL EDUCACAO (CONT.)"],
-        "Dotacao_CCusto": "ENS. FUNDAM. 70%",
+        "Dotacao_CCusto": "ED.FUNDAMENTAL 70%",
         "Dotacao_Regime": "CONTRATADO"
     },
     "ENSINO FUNDAMENTAL  30% EFETIVOS - CREDOR 105": {
         "C.Custo": "092 - ENSINO FUNDAMENTAL 30%",
         "Regimes": ["002 - EFETIVO"],
-        "Dotacao_CCusto": "ENS. FUNDAM. 30%",
+        "Dotacao_CCusto": "ENSINO FUNDAMENTAL 30%",
         "Dotacao_Regime": "EFETIVO"
     },
     "ENSINO FUNDAMENTAL 30% - CONTRATADOS - CREDOR 543": {
         "C.Custo": "092 - ENSINO FUNDAMENTAL 30%",
         "Regimes": ["009 - CONTRATO"],
-        "Dotacao_CCusto": "ENS. FUNDAM. 30%",
+        "Dotacao_CCusto": "ENSINO FUNDAMENTAL 30%",
         "Dotacao_Regime": "CONTRATADO"
     },
     "ED.INFANTIL  PRE ESCOLA 70% - EFETIVOS - CREDOR 105": {
         "C.Custo": "083 - E.I. PRÉ-ESCOLA 70%",
         "Regimes": ["002 - EFETIVO", "015 - EFETIVO/COMISSIONADO", "019 - PROFISSIONAL EDUCACAO ( EST.)", "030 - PROF EDUCACAO EST./COMISSIONADO", "031 - PROF EDUCACAO EST./COMISSIONADO (CARREIRA)"],
-        "Dotacao_CCusto": "E.I. PRE ESCOLA 70%",
+        "Dotacao_CCusto": "ED.INFANTIL PRE ESCOLA 70%",
         "Dotacao_Regime": "EFETIVO"
     },
     "ED.INFANTIL  PRE ESCOLA 70% - CONTRATADOS - CREDOR 543": {
         "C.Custo": "083 - E.I. PRÉ-ESCOLA 70%",
         "Regimes": ["009 - CONTRATO", "020 - PROFISSIONAL EDUCACAO (CONT.)"],
-        "Dotacao_CCusto": "E.I. PRE ESCOLA 70%",
+        "Dotacao_CCusto": "ED.INFANTIL PRE ESCOLA 70%",
         "Dotacao_Regime": "CONTRATADO"
     },
     "ED.INFANTIL  PRE ESCOLA 30% EFETIVOS - CREDOR 105": {
         "C.Custo": "082 - E.I. PRÉ-ESCOLA 30%",
         "Regimes": ["002 - EFETIVO", "019 - PROFISSIONAL EDUCACAO ( EST.)"],
-        "Dotacao_CCusto": "E.I. PRE ESCOLA 30%",
+        "Dotacao_CCusto": "ED.INFANTIL PRE ESCOLA 30%",
         "Dotacao_Regime": "EFETIVO"
     },
     "ED.INFANTIL CRECHE 70% - EFETIVOS - CREDOR 105": {
         "C.Custo": "077 - E.I. CRECHE 70%",
         "Regimes": ["002 - EFETIVO", "015 - EFETIVO/COMISSIONADO", "019 - PROFISSIONAL EDUCACAO ( EST.)", "030 - PROF EDUCACAO EST./COMISSIONADO", "031 - PROF EDUCACAO EST./COMISSIONADO (CARREIRA)", "032 - EFETIVO/COMISSIONADO (CARREIRA)"],
-        "Dotacao_CCusto": "E.I. CRECHE 70%",
+        "Dotacao_CCusto": "ED.INFANTIL CRECHE 70%",
         "Dotacao_Regime": "EFETIVO"
     },
     "ED.INFANTIL  CRECHE 70% - CONTRATADOS - CREDOR 543": {
         "C.Custo": "077 - E.I. CRECHE 70%",
         "Regimes": ["009 - CONTRATO", "020 - PROFISSIONAL EDUCACAO (CONT.)"],
-        "Dotacao_CCusto": "E.I. CRECHE 70%",
+        "Dotacao_CCusto": "ED.INFANTIL CRECHE 70%",
         "Dotacao_Regime": "CONTRATADO"
     },
     "ED.INFANTIL  CRECHE 30% EFETIVOS - CREDOR 105": {
         "C.Custo": "076 - E.I. CRECHE 30%",
         "Regimes": ["002 - EFETIVO", "019 - PROFISSIONAL EDUCACAO ( EST.)", "030 - PROF EDUCACAO EST./COMISSIONADO"],
-        "Dotacao_CCusto": "E.I. CRECHE 30%",
+        "Dotacao_CCusto": "ED.INFANTIL CRECHE 30%",
         "Dotacao_Regime": "EFETIVO"
     },
     "EDUCAÇÃO ESPECIAL 70% EFETIVOS - CREDOR 105": {
         "C.Custo": "072 - EDUCAÇÃO ESPECIAL 70%",
         "Regimes": ["002 - EFETIVO", "019 - PROFISSIONAL EDUCACAO ( EST.)"],
-        "Dotacao_CCusto": "ED. ESPECIAL 70%",
+        "Dotacao_CCusto": "EDUCAÇÃO ESPECIAL 70%",
         "Dotacao_Regime": "EFETIVO"
     },
     "EDUCAÇÃO ESPECIAL 70% - CONTRATADOS - CREDOR 543": {
         "C.Custo": "072 - EDUCAÇÃO ESPECIAL 70%",
         "Regimes": ["009 - CONTRATO", "020 - PROFISSIONAL EDUCACAO (CONT.)"],
-        "Dotacao_CCusto": "ED. ESPECIAL 70%",
+        "Dotacao_CCusto": "EDUCAÇÃO ESPECIAL 70%",
         "Dotacao_Regime": "CONTRATADO"
     },
     "EJA 70%  EFETIVOS - CREDOR 105": {
