@@ -257,7 +257,24 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
         if in_block:
             dotacao_atual = sheet.cell(row=row, column=3).value
             manter_dotacao = False
-            if dotacao_atual and ("NÃO EMPENHAR" in str(dotacao_atual).upper() or "NAO EMPENHAR" in str(dotacao_atual).upper()):
+            
+            # Força o NÃO EMPENHAR para rubricas específicas que sempre o utilizam
+            rubricas_nao_empenhar = [
+                "PARCELAANT13", "RESSARCIMENTO", "DEDUCAOART37X", 
+                "DIFERENCACARGAHORARIA", "DESCONTODIASHORAS", "FALTASFALTASHORAS"
+            ]
+            if norm_cell in rubricas_nao_empenhar:
+                # Trata erro de merged cell
+                if type(sheet.cell(row=row, column=3)).__name__ != 'MergedCell':
+                    sheet.cell(row=row, column=3).value = "NÃO EMPENHAR"
+                    import copy
+                    if sheet.cell(row=row, column=3).font:
+                        new_font = copy.copy(sheet.cell(row=row, column=3).font)
+                        new_font.bold = True
+                        sheet.cell(row=row, column=3).font = new_font
+                manter_dotacao = True
+                
+            if dotacao_atual and ("NǟO EMPENHAR" in str(dotacao_atual).upper() or "NAO EMPENHAR" in str(dotacao_atual).upper() or "NÃO EMPENHAR" in str(dotacao_atual).upper()):
                 manter_dotacao = True
                 
             # Look for Folha Bruta
