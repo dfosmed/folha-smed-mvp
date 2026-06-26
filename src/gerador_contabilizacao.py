@@ -310,23 +310,47 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
                 expected_nat = natureza_map_norm[norm_cell]
                 val_nat = current_block_df[current_block_df['Natureza'] == expected_nat]['Valor'].sum()
                 
-                if val_nat > 0:
-                    sheet.cell(row=row, column=2).value = val_nat
-                    mapped_naturezas_in_block.add(expected_nat)
-                else:
-                    sheet.cell(row=row, column=2).value = None
-                
-                # Injetar a dotação dinâmica se não for 'NÃO EMPENHAR'
-                if not manter_dotacao and dotacoes_json is not None:
+                nova_dotacao = None
+                if dotacoes_json is not None:
                     d_ccusto = current_block_config.get("Dotacao_CCusto")
                     d_regime = current_block_config.get("Dotacao_Regime")
-                    
                     if d_ccusto and d_regime:
                         key = f"{d_ccusto.upper()}_{d_regime.upper()}"
                         tipo_selecionado = config_dotacoes_dict.get(key, None)
                         nova_dotacao = get_dotacao_value(dotacoes_json, d_ccusto, d_regime, cell_val, tipo_selecionado)
-                        if nova_dotacao:
-                            sheet.cell(row=row, column=3).value = nova_dotacao
+                        
+                is_special_dynamic = nova_dotacao and nova_dotacao.upper() in ["OP EXTRA"]
+                is_special_rubrica = norm_cell in rubricas_nao_empenhar
+                
+                def set_dotacao(val, bold=False):
+                    if type(sheet.cell(row=row, column=3)).__name__ != 'MergedCell':
+                        sheet.cell(row=row, column=3).value = val
+                        import copy
+                        if sheet.cell(row=row, column=3).font:
+                            new_font = copy.copy(sheet.cell(row=row, column=3).font)
+                            new_font.bold = bold
+                            sheet.cell(row=row, column=3).font = new_font
+                            
+                if val_nat > 0:
+                    sheet.cell(row=row, column=2).value = val_nat
+                    mapped_naturezas_in_block.add(expected_nat)
+                    
+                    if is_special_rubrica:
+                        pass # Já forçado no início do bloco
+                    elif is_special_dynamic:
+                        set_dotacao(nova_dotacao, bold=True)
+                    elif nova_dotacao:
+                        set_dotacao(nova_dotacao, bold=False)
+                    else:
+                        set_dotacao(None, bold=False)
+                else:
+                    sheet.cell(row=row, column=2).value = None
+                    if is_special_rubrica:
+                        pass # Já forçado no início do bloco
+                    elif is_special_dynamic:
+                        set_dotacao(nova_dotacao, bold=True)
+                    else:
+                        set_dotacao(None, bold=False)
                             
     output = io.BytesIO()
     wb.save(output)
