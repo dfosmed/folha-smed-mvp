@@ -108,7 +108,7 @@ CONFIG_BLOCOS = {
     },
     "ED.INFANTIL  CRECHE 70% - CONTRATADOS - CREDOR 543": {
         "C.Custo": "077 - E.I. CRECHE 70%",
-        "Regimes": ["002 - EFETIVO", "020 - PROFISSIONAL EDUCACAO (CONT.)"],
+        "Regimes": ["009 - CONTRATO", "020 - PROFISSIONAL EDUCACAO (CONT.)"],
         "Dotacao_CCusto": "E.I. CRECHE 70%",
         "Dotacao_Regime": "CONTRATADO"
     },
