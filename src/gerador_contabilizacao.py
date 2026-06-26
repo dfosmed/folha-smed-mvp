@@ -37,19 +37,19 @@ CONFIG_BLOCOS = {
     "RESTANTE DA SMED 30% - COMISSIONADOS/CONTR. - CREDOR 543": {
         "C.Custo": "098 - RESTANTE SMED 30%",
         "Regimes": ["003 - COMISSIONADO"],
-        "Dotacao_CCusto": "REST. SMED 30%",
+        "Dotacao_CCusto": "RESTANTE DA SMED 30%",
         "Dotacao_Regime": "COMISSIONADOS"
     },
-    "RESTANTE DA SMED 30% EFETIVOS - CREDOR 105": {
+    "RESTANTE DA SMED 30% - EFETIVOS - CREDOR 105": {
         "C.Custo": "098 - RESTANTE SMED 30%",
         "Regimes": ["015 - EFETIVO/COMISSIONADO", "019 - PROFISSIONAL EDUCACAO ( EST.)"],
-        "Dotacao_CCusto": "REST. SMED 30%",
+        "Dotacao_CCusto": "RESTANTE DA SMED 30%",
         "Dotacao_Regime": "EFETIVO"
     },
     "RESTANTE DA SMED 30% - CONTRATADOS - CREDOR 543": {
         "C.Custo": "098 - RESTANTE SMED 30%",
         "Regimes": ["009 - CONTRATO", "020 - PROFISSIONAL EDUCACAO (CONT.)"],
-        "Dotacao_CCusto": "REST. SMED 30%",
+        "Dotacao_CCusto": "RESTANTE DA SMED 30%",
         "Dotacao_Regime": "CONTRATADO"
     },
     "ED.FUNDAMENTAL 70% - COMISSIONADO- CREDOR 543": {
