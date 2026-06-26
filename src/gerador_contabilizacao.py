@@ -264,7 +264,12 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
             if "FOLHABRUTA" in norm_cell or "BRUTOSUBISDIO" in norm_cell or "BRUTOSUBSIDIO" in norm_cell or ("BRUTO" in norm_cell and "SUBSIDIO" in norm_cell) or ("SUBSIDIO" in norm_cell and "SECRETARIO" in norm_cell):
                 if not folha_bruta_row and "EMPENHO" not in norm_cell:
                     folha_bruta_row = row
-                    val_folha = current_block_df[current_block_df['Grupo'] == 'Provento']['Valor'].sum()
+                    
+                    if current_block_config.get("Dotacao_Regime") == "AGENTE POLÍTICO":
+                        val_folha = current_block_df[current_block_df['Natureza'] == 'VENCIMENTOS']['Valor'].sum()
+                    else:
+                        val_folha = current_block_df[current_block_df['Grupo'] == 'Provento']['Valor'].sum()
+                        
                     if val_folha > 0:
                         sheet.cell(row=row, column=2).value = val_folha
                     else:
