@@ -12,8 +12,12 @@ def gerar_consignados_excel(df):
     """
     df['Natureza_Upper'] = df['Natureza'].astype(str).str.strip().str.upper()
 
-    listas_por_grupo = {
-        "EFETIVOS": [
+    try:
+        with open(JSON_FILE, 'r', encoding='utf-8') as f:
+            efetivos_json = json.load(f)
+            efetivos_list = [(item['codigo'], item['descricao']) for item in efetivos_json]
+    except Exception:
+        efetivos_list = [
             (10, "SINDICATO"), (11, "PENSÃO"), (39, "CAIXA"), (84, "BIG CARD"), (86, "BANCO BRASIL"), 
             (92, "COUNTRY"), (124, "MINAS CLUBE"), (125, "PARANA"), (1276, "VALE TRANSPORTE"), 
             (1279, "SINSEM CLUBE"), (1280, "SICOOB AC CR"), (1284, "BC COOPERATIVO"), (1292, "BRADESCO"), 
@@ -21,7 +25,10 @@ def gerar_consignados_excel(df):
             (1454, "IPREM LEI 316/2023"), (1455, "BC DAYCOVAL"), (1457, "BC PAN"), (1462, "PAM"), 
             (1463, "B. NIO"), (1466, "DESC JUDICIAL"), (1469, "BC MASTER"), (1472, "SICREDI"), 
             (1473, "BR CARD"), (1476, "CASH CARD"), (1478, "IPREM")
-        ],
+        ]
+
+    listas_por_grupo = {
+        "EFETIVOS": efetivos_list,
         "CONTRATADOS": [
             (10, "SINDICATO"), (11, "PENSÃO"), (92, "COUNTRY"), (1276, "VALE TRANSPORTE"),
             (1279, "SINSEM CLUBE"), (1294, "IRRF"), (1479, "INSS PF")
