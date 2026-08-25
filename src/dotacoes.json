@@ -1555,25 +1555,25 @@
         "C. CUSTO": "OUTROS SMED",
         "REGIME": "CONTRATADO",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
-        "DOTAÇÃO 25%": "724-15000000000",
-        "DOTAÇÃO FUNDEB": "724-15000000000",
-        "DOTAÇÃO EXTRA 25%": "724-15000000000"
+        "DOTAÇÃO 25%": "720-15000000000",
+        "DOTAÇÃO FUNDEB": "720-15000000000",
+        "DOTAÇÃO EXTRA 25%": "720-15000000000"
     },
     {
         "C. CUSTO": "OUTROS SMED",
         "REGIME": "COMISSIONADOS",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
-        "DOTAÇÃO 25%": "724-15000000000",
-        "DOTAÇÃO FUNDEB": "724-15000000000",
-        "DOTAÇÃO EXTRA 25%": "724-15000000000"
+        "DOTAÇÃO 25%": "721-15000000000",
+        "DOTAÇÃO FUNDEB": "721-15000000000",
+        "DOTAÇÃO EXTRA 25%": "721-15000000000"
     },
     {
         "C. CUSTO": "OUTROS SMED",
         "REGIME": "AGENTE POLÍTICO",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
-        "DOTAÇÃO 25%": "724-15000000000",
-        "DOTAÇÃO FUNDEB": "724-15000000000",
-        "DOTAÇÃO EXTRA 25%": "724-15000000000"
+        "DOTAÇÃO 25%": "721-15000000000",
+        "DOTAÇÃO FUNDEB": "721-15000000000",
+        "DOTAÇÃO EXTRA 25%": "721-15000000000"
     },
     {
         "C. CUSTO": "EDUCAÇÃO ESPECIAL 30%",
@@ -1603,8 +1603,8 @@
         "C. CUSTO": "EDUCAÇÃO ESPECIAL 70%",
         "REGIME": "CONTRATADO",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
-        "DOTAÇÃO 25%": "481-15000001001",
-        "DOTAÇÃO FUNDEB": "611-15400000000",
+        "DOTAÇÃO 25%": "477-15000001001",
+        "DOTAÇÃO FUNDEB": "613-15400001070",
         "DOTAÇÃO EXTRA 25%": null
     },
     {
@@ -1619,8 +1619,8 @@
         "C. CUSTO": "ED.INFANTIL CRECHE 30%",
         "REGIME": "CONTRATADO",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
-        "DOTAÇÃO 25%": "383-15000001001",
-        "DOTAÇÃO FUNDEB": "566-15400000000",
+        "DOTAÇÃO 25%": "379-15000001001",
+        "DOTAÇÃO FUNDEB": "562-15400000000",
         "DOTAÇÃO EXTRA 25%": null
     },
     {
@@ -1635,8 +1635,8 @@
         "C. CUSTO": "ED.INFANTIL CRECHE 70%",
         "REGIME": "CONTRATADO",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
-        "DOTAÇÃO 25%": "383-15000001001",
-        "DOTAÇÃO FUNDEB": "566-15400000000",
+        "DOTAÇÃO 25%": "379-15000001001",
+        "DOTAÇÃO FUNDEB": "568-15400001070",
         "DOTAÇÃO EXTRA 25%": null
     },
     {
@@ -1651,8 +1651,8 @@
         "C. CUSTO": "ED.INFANTIL PRE ESCOLA 30%",
         "REGIME": "CONTRATADO",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
-        "DOTAÇÃO 25%": "383-15000001001",
-        "DOTAÇÃO FUNDEB": "566-15400000000",
+        "DOTAÇÃO 25%": "379-15000001001",
+        "DOTAÇÃO FUNDEB": "562-15400000000",
         "DOTAÇÃO EXTRA 25%": null
     },
     {
@@ -1667,8 +1667,8 @@
         "C. CUSTO": "ED.INFANTIL PRE ESCOLA 70%",
         "REGIME": "CONTRATADO",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
-        "DOTAÇÃO 25%": "383-15000001001",
-        "DOTAÇÃO FUNDEB": "566-15400000000",
+        "DOTAÇÃO 25%": "379-15000001001",
+        "DOTAÇÃO FUNDEB": "568-15400001070",
         "DOTAÇÃO EXTRA 25%": null
     },
     {
@@ -1683,8 +1683,8 @@
         "C. CUSTO": "EJA 70%",
         "REGIME": "CONTRATADO",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
-        "DOTAÇÃO 25%": "432-15000001001",
-        "DOTAÇÃO FUNDEB": "590-15400000000",
+        "DOTAÇÃO 25%": "428-15000001001",
+        "DOTAÇÃO FUNDEB": "592-15400001070",
         "DOTAÇÃO EXTRA 25%": null
     },
     {
@@ -1699,8 +1699,8 @@
         "C. CUSTO": "ENSINO FUNDAMENTAL 30%",
         "REGIME": "CONTRATADO",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
-        "DOTAÇÃO 25%": "334-15000001001",
-        "DOTAÇÃO FUNDEB": "545-15400000000",
+        "DOTAÇÃO 25%": "330-15000001001",
+        "DOTAÇÃO FUNDEB": "541-15400000000",
         "DOTAÇÃO EXTRA 25%": null
     },
     {
@@ -1715,7 +1715,7 @@
         "C. CUSTO": "ED.FUNDAMENTAL 70%",
         "REGIME": "CONTRATADO",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
-        "DOTAÇÃO 25%": "334-15000001001",
+        "DOTAÇÃO 25%": "330-15000001001",
         "DOTAÇÃO FUNDEB": "547-15400001070",
         "DOTAÇÃO EXTRA 25%": null
     },
@@ -1739,16 +1739,16 @@
         "C. CUSTO": "RESTANTE DA SMED 30%",
         "REGIME": "CONTRATADO",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
-        "DOTAÇÃO 25%": "296-15000001001",
-        "DOTAÇÃO FUNDEB": "530-15400000000",
+        "DOTAÇÃO 25%": "292-15000001001",
+        "DOTAÇÃO FUNDEB": "526-15400000000",
         "DOTAÇÃO EXTRA 25%": null
     },
     {
         "C. CUSTO": "RESTANTE DA SMED 30%",
         "REGIME": "COMISSIONADOS",
         "DESCRIÇÃO": "FOLHA BRUTA PARA EMPENHO",
-        "DOTAÇÃO 25%": "296-15000001001",
-        "DOTAÇÃO FUNDEB": "530-15400000000",
+        "DOTAÇÃO 25%": "293-15000001001",
+        "DOTAÇÃO FUNDEB": "527-15400000000",
         "DOTAÇÃO EXTRA 25%": null
     }
 ]
