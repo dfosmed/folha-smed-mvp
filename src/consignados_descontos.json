@@ -110,5 +110,9 @@
   {
     "codigo": 1478,
     "descricao": "IPREM"
+  },
+  {
+    "codigo": 3888,
+    "descricao": "SICRED 2"
   }
 ]
