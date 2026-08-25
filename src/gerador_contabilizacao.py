@@ -42,7 +42,7 @@ CONFIG_BLOCOS = {
     },
     "RESTANTE DA SMED 30% - EFETIVOS - CREDOR 105": {
         "C.Custo": "098 - RESTANTE SMED 30%",
-        "Regimes": ["015 - EFETIVO/COMISSIONADO", "019 - PROFISSIONAL EDUCACAO ( EST.)"],
+        "Regimes": ["002 - EFETIVO", "015 - EFETIVO/COMISSIONADO", "019 - PROFISSIONAL EDUCACAO ( EST.)"],
         "Dotacao_CCusto": "RESTANTE DA SMED 30%",
         "Dotacao_Regime": "EFETIVO"
     },
