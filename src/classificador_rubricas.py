@@ -56,6 +56,21 @@ def classificar_rubricas(df: pd.DataFrame) -> pd.DataFrame:
         except Exception as e:
             print(f"Erro ao carregar banco de dados JSON '{caminho_json}': {str(e)}")
 
+    # 2. Carregar rubricas de consignados (JSON de descontos) para que sejam classificadas automaticamente
+    caminho_consignados = os.path.join(os.path.dirname(os.path.abspath(__file__)), "consignados_descontos.json")
+    if os.path.exists(caminho_consignados):
+        try:
+            with open(caminho_consignados, "r", encoding="utf-8") as f:
+                consig_json = json.load(f)
+                for item in consig_json:
+                    cod_str = str(item.get("codigo", ""))
+                    desc_raw = item.get("descricao", "")
+                    if cod_str:
+                        # A natureza do consignado é a própria descrição para uso no gerar_consignados.py
+                        dict_verbas_codigo[cod_str] = desc_raw
+        except Exception as e:
+            print(f"Erro ao carregar banco de consignados '{caminho_consignados}': {str(e)}")
+
     for idx, row in df_classificado.iterrows():
         tipo = str(row.get('Tipo', ''))
         codigo_raw = row.get('Codigo', '')
