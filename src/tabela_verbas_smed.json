@@ -1334,5 +1334,33 @@
   "3949": {
     "descricao": "DIFERENÇA DE SALÁRIO RES",
     "natureza": "VENCIMENTOS"
+  },
+  "3383": {
+    "descricao": "MEDIA ADIC NOTUR HOSP",
+    "natureza": "INDENIZAÇÃO"
+  },
+  "3958": {
+    "descricao": "AUXÍLIO DOENÇA EFETIVO (",
+    "natureza": "AUXÍLIO DOENÇA"
+  },
+  "3959": {
+    "descricao": "QUINQUÊNIO 10% AUX DOENÇ",
+    "natureza": "VENCIMENTOS"
+  },
+  "3960": {
+    "descricao": "QUINQUENIO 5% AUX DOENÇA",
+    "natureza": "VENCIMENTOS"
+  },
+  "3976": {
+    "descricao": "IP VANT.P. A48/LC35 AUX",
+    "natureza": "VENCIMENTOS"
+  },
+  "3977": {
+    "descricao": "PERICULOSIDADE AUX DOENC",
+    "natureza": "VENCIMENTOS"
+  },
+  "3983": {
+    "descricao": "RSR VANT. P. A48/LC35 AU",
+    "natureza": "VENCIMENTOS"
   }
 }
