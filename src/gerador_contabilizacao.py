@@ -413,37 +413,6 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
                     else:
                         set_dotacao(None, bold=False)
                             
-    from openpyxl.styles import PatternFill, Font
-    import copy
-    
-    fill_f2f2f2 = PatternFill(start_color="F2F2F2", end_color="F2F2F2", fill_type="solid")
-    rubricas_nao_empenhar_check = [
-        "PARCELAANT13", "RESSARCIMENTO", "DEDUCAOART37X", 
-        "DIFERENCACARGAHORARIA", "DESCONTODIASHORAS", "FALTASFALTASHORAS"
-    ]
-    
-    for row in range(1, sheet.max_row + 1):
-        cell_natureza = sheet.cell(row=row, column=1)
-        if cell_natureza.value and isinstance(cell_natureza.value, str):
-            norm_val = normalize_key(cell_natureza.value)
-            if norm_val in rubricas_nao_empenhar_check:
-                for col in range(1, 6):
-                    c = sheet.cell(row=row, column=col)
-                    if type(c).__name__ != 'MergedCell':
-                        c.fill = fill_f2f2f2
-                        
-        cell_dotacao = sheet.cell(row=row, column=3)
-        if type(cell_dotacao).__name__ != 'MergedCell':
-            if cell_dotacao.value and isinstance(cell_dotacao.value, str):
-                val_upper = cell_dotacao.value.upper()
-                if "NÃO EMPENHAR" in val_upper or "NAO EMPENHAR" in val_upper:
-                    if cell_dotacao.font:
-                        new_font = copy.copy(cell_dotacao.font)
-                        new_font.bold = True
-                        cell_dotacao.font = new_font
-                    else:
-                        cell_dotacao.font = Font(bold=True)
-
     output = io.BytesIO()
     wb.save(output)
     return output.getvalue()
