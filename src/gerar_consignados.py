@@ -18,24 +18,24 @@ def gerar_consignados_excel(df):
             efetivos_list = [(item['codigo'], item['descricao']) for item in efetivos_json]
     except Exception:
         efetivos_list = [
-            (142, "SINDICATO"), (470, "PENSÃO"), (136, "CAIXA"), (104, "BIG CARD"), (147, "BANCO BRASIL"), 
-            (134, "COUNTRY"), (176, "MINAS CLUBE"), (232, "PARANA"), (559, "VALE TRANSPORTE"), 
-            (266, "SINSEM CLUBE"), (277, "SICOOB AC CR"), (423, "BC COOPERATIVO"), (441, "BRADESCO"), 
-            (309, "SANTANDER"), (531, "IRRF"), (448, "UP BRASIL"), (447, "NOTRE DAME"), 
-            (3781, "IPREM LEI 316/2023"), (3759, "BC DAYCOVAL"), (3784, "BC PAN"), (101, "PAM"), 
-            (315, "B. NIO"), (188, "DESC JUDICIAL"), (3882, "BC MASTER"), (3887, "SICREDI"), 
-            (3886, "BR CARD"), (3909, "CASH CARD"), (554, "IPREM"), (3888, "SICRED 2")
+            (10, "SINDICATO"), (11, "PENSÃO"), (39, "CAIXA"), (84, "BIG CARD"), (86, "BANCO BRASIL"), 
+            (92, "COUNTRY"), (124, "MINAS CLUBE"), (125, "PARANA"), (1276, "VALE TRANSPORTE"), 
+            (1279, "SINSEM CLUBE"), (1280, "SICOOB AC CR"), (1284, "BC COOPERATIVO"), (1292, "BRADESCO"), 
+            (1293, "SANTANDER"), (1294, "IRRF"), (1298, "UP BRASIL"), (1299, "NOTRE DAME"), 
+            (1454, "IPREM LEI 316/2023"), (1455, "BC DAYCOVAL"), (1457, "BC PAN"), (1462, "PAM"), 
+            (1463, "B. NIO"), (1466, "DESC JUDICIAL"), (1469, "BC MASTER"), (1472, "SICREDI"), 
+            (1473, "BR CARD"), (1476, "CASH CARD"), (1478, "IPREM"), (3888, "SICRED 2")
         ]
 
     listas_por_grupo = {
         "EFETIVOS": efetivos_list,
         "CONTRATADOS": [
-            (142, "SINDICATO"), (470, "PENSÃO"), (134, "COUNTRY"), (559, "VALE TRANSPORTE"),
-            (266, "SINSEM CLUBE"), (531, "IRRF"), (528, "INSS PF")
+            (10, "SINDICATO"), (11, "PENSÃO"), (92, "COUNTRY"), (1276, "VALE TRANSPORTE"),
+            (1279, "SINSEM CLUBE"), (1294, "IRRF"), (1479, "INSS PF")
         ],
         "COMISSIONADOS": [
-            (142, "SINDICATO"), (470, "PENSÃO"), (134, "COUNTRY"), (559, "VALE TRANSPORTE"),
-            (266, "SINSEM CLUBE"), (531, "IRRF"), (528, "INSS PF")
+            (10, "SINDICATO"), (11, "PENSÃO"), (92, "COUNTRY"), (1276, "VALE TRANSPORTE"),
+            (1279, "SINSEM CLUBE"), (1294, "IRRF"), (1479, "INSS PF")
         ]
     }
 
