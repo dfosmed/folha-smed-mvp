@@ -65,7 +65,7 @@ def classificar_rubricas(df: pd.DataFrame) -> pd.DataFrame:
                 for item in consig_json:
                     cod_str = str(item.get("codigo", ""))
                     desc_raw = item.get("descricao", "")
-                    if cod_str:
+                    if cod_str and cod_str not in dict_verbas_codigo:
                         # A natureza do consignado é a própria descrição para uso no gerar_consignados.py
                         dict_verbas_codigo[cod_str] = desc_raw
         except Exception as e:
