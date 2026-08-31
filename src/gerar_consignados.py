@@ -24,7 +24,7 @@ def gerar_consignados_excel(df):
             (1293, "SANTANDER"), (1294, "IRRF"), (1298, "UP BRASIL"), (1299, "NOTRE DAME"), 
             (1454, "IPREM LEI 316/2023"), (1455, "BC DAYCOVAL"), (1457, "BC PAN"), (1462, "PAM"), 
             (1463, "B. NIO"), (1466, "DESC JUDICIAL"), (1469, "BC MASTER"), (1472, "SICREDI"), 
-            (1473, "BR CARD"), (1476, "CASH CARD"), (1478, "IPREM"), (3888, "SICRED 2")
+            (1473, "BR CARD"), (1476, "CASH CARD"), (1478, "IPREM")
         ]
 
     listas_por_grupo = {
@@ -198,7 +198,10 @@ def gerar_consignados_excel(df):
             for codigo, descricao in lista_itens:
                 natureza_upper = descricao.strip().upper()
                 
-                valor_soma = df_grupo_descontos.loc[df_grupo_descontos['Natureza_Upper'] == natureza_upper, 'Valor'].sum()
+                if natureza_upper == 'SICREDI':
+                    valor_soma = df_grupo_descontos.loc[df_grupo_descontos['Natureza_Upper'].isin(['SICREDI', 'SICRED 2']), 'Valor'].sum()
+                else:
+                    valor_soma = df_grupo_descontos.loc[df_grupo_descontos['Natureza_Upper'] == natureza_upper, 'Valor'].sum()
                 
                 dados_saida.append((codigo, descricao, valor_soma))
                 total_grupo += valor_soma

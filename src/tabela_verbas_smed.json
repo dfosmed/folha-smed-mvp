@@ -1362,5 +1362,9 @@
   "3983": {
     "descricao": "RSR VANT. P. A48/LC35 AU",
     "natureza": "VENCIMENTOS"
+  },
+  "3888": {
+    "descricao": "SICRED 2",
+    "natureza": "SICRED 2"
   }
 }
