@@ -110,5 +110,9 @@
   {
     "codigo": 1478,
     "descricao": "IPREM"
+  },
+  {
+    "codigo": 1479,
+    "descricao": "INSS PF"
   }
 ]
