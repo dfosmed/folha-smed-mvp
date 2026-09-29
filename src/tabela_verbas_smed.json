@@ -1366,5 +1366,29 @@
   "3888": {
     "descricao": "SICRED 2",
     "natureza": "SICRED 2"
+  },
+  "3554": {
+    "descricao": "MEDIA GRAT.A. XII, LC 17",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3646": {
+    "descricao": "MEDIA DIF.GR. A XII, LC1",
+    "natureza": "IDENIZAÇÕES E RESTITUIÇÕES"
+  },
+  "3556": {
+    "descricao": "MEDIA GRAT. A. XII, LC 1",
+    "natureza": "VENCIMENTOS"
+  },
+  "3645": {
+    "descricao": "MEDIA DIF.GR. A XII, LC1",
+    "natureza": "VENCIMENTOS"
+  },
+  "959": {
+    "descricao": "REPOSIÇÃO FALTA INDEVIDA",
+    "natureza": "VENCIMENTOS"
+  },
+  "479": {
+    "descricao": "PENSÃO VENCIMENTO",
+    "natureza": "PENSÃO"
   }
 }

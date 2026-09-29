@@ -24,7 +24,7 @@ def gerar_consignados_excel(df):
             (1293, "SANTANDER"), (1294, "IRRF"), (1298, "UP BRASIL"), (1299, "NOTRE DAME"), 
             (1454, "IPREM LEI 316/2023"), (1455, "BC DAYCOVAL"), (1457, "BC PAN"), (1462, "PAM"), 
             (1463, "B. NIO"), (1466, "DESC JUDICIAL"), (1469, "BC MASTER"), (1472, "SICREDI"), 
-            (1473, "BR CARD"), (1476, "CASH CARD"), (1478, "IPREM")
+            (1473, "BR CARD"), (1476, "CASH CARD"), (1478, "IPREM"), (1479, "INSS PF"), (3955, "BANCO CDC 1")
         ]
 
     listas_por_grupo = {
