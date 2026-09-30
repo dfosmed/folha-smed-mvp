@@ -108,7 +108,7 @@ def gerar_consignados_excel(df):
         "EDUCAÇÃO ESPECIAL 70%": {
             "prefix": "072 - ",
             "grupos": {
-                "EFETIVOS": ['002 - EFETIVO', '019 - PROFISSIONAL EDUCACAO ( EST.)'],
+                "EFETIVOS": ['002 - EFETIVO', '019 - PROFISSIONAL EDUCACAO ( EST.)', '026 - EFETIVO/CEDIDO', '030 - PROF EDUCACAO EST./COMISSIONADO'],
                 "CONTRATADOS": ['009 - CONTRATO', '020 - PROFISSIONAL EDUCACAO (CONT.)']
             }
         },

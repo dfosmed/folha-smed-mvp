@@ -120,7 +120,7 @@ CONFIG_BLOCOS = {
     },
     "EDUCAÇÃO ESPECIAL 70% EFETIVOS - CREDOR 105": {
         "C.Custo": "072 - EDUCAÇÃO ESPECIAL 70%",
-        "Regimes": ["002 - EFETIVO", "019 - PROFISSIONAL EDUCACAO ( EST.)"],
+        "Regimes": ["002 - EFETIVO", "019 - PROFISSIONAL EDUCACAO ( EST.)", "026 - EFETIVO/CEDIDO", "030 - PROF EDUCACAO EST./COMISSIONADO"],
         "Dotacao_CCusto": "EDUCAÇÃO ESPECIAL 70%",
         "Dotacao_Regime": "EFETIVO"
     },
