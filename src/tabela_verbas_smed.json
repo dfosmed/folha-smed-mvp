@@ -121,7 +121,7 @@
   },
   "92": {
     "descricao": "REP. DESCONTO INDEVIDO - VALE TRANSPORTE",
-    "natureza": "INDENIZAÇÕES E RESTITUIÇÕES"
+    "natureza": "VENCIMENTOS"
   },
   "95": {
     "descricao": "ABONO PERMANÊNCIA",
@@ -1390,5 +1390,13 @@
   "479": {
     "descricao": "PENSÃO VENCIMENTO",
     "natureza": "PENSÃO"
+  },
+  "03963": {
+    "descricao": "ADIC ART. 6º, LC 199/15",
+    "natureza": "VENCIMENTOS"
+  },
+  "3963": {
+    "descricao": "ADIC ART. 6º, LC 199/15",
+    "natureza": "VENCIMENTOS"
   }
 }
