@@ -265,14 +265,22 @@ def get_dotacao_value(dotacoes_json, ccusto, regime, natureza_planilha, tipo_dot
     natureza_norm = normalize_key(natureza_planilha)
     tipo_norm = normalize_key(tipo_dotacao)
     
+    alias_map = {
+        'AFASTMATERNIDADESALMATERN': 'AFASTAMENTOMATERNIDADE',
+        'AFASTMATERNIDADEINSSCONTR': 'AFASTAMENTOMATERNIDADE',
+        'SALARIOFAMILIAINSSCONTR': 'SALARIOFAMILIA',
+    }
+    natureza_busca = alias_map.get(natureza_norm, natureza_norm)
+    
     # Encontrar no json iterando
     for row_data in dotacoes_json:
         r_ccusto = str(row_data.get('C. CUSTO', '')).strip().upper()
         r_regime = str(row_data.get('REGIME', '')).strip().upper()
         r_desc = str(row_data.get('DESCRIÇÃO', row_data.get('DESCRIÇO', ''))).strip() 
+        r_desc_norm = normalize_key(r_desc)
         
         if r_ccusto == ccusto.strip().upper() and r_regime == regime.strip().upper():
-            if normalize_key(r_desc) == natureza_norm:
+            if r_desc_norm == natureza_norm or r_desc_norm == natureza_busca:
                 # Encontrou a linha, agora acha a coluna
                 for col, val in row_data.items():
                     if normalize_key(col) == tipo_norm:
@@ -379,8 +387,7 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
             ]
             rubricas_op_extra = [
                 "SALARIOFAMILIAINSSCONTR",
-                "AFASTMATERNIDADEINSSCONTR",
-                "AFASTMATERNIDADESALMATERN"
+                "AFASTMATERNIDADEINSSCONTR"
             ]
             
             if norm_cell in rubricas_nao_empenhar:
@@ -488,6 +495,13 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
                         key = f"{d_ccusto.upper()}_{d_regime.upper()}"
                         tipo_selecionado = config_dotacoes_dict.get(key, None)
                         nova_dotacao = get_dotacao_value(dotacoes_json, d_ccusto, d_regime, cell_val, tipo_selecionado)
+                        
+                        # Fallback para Afastamento Maternidade em Efetivos:
+                        # Se não encontrar dotação específica, puxa a mesma de Auxílio Doença ou Folha Bruta para Empenho
+                        if not nova_dotacao and norm_cell == "AFASTMATERNIDADESALMATERN":
+                            nova_dotacao = get_dotacao_value(dotacoes_json, d_ccusto, d_regime, "AUXILIO DOENÇA (LICENÇA SAÚDE)", tipo_selecionado)
+                            if not nova_dotacao:
+                                nova_dotacao = get_dotacao_value(dotacoes_json, d_ccusto, d_regime, "FOLHA BRUTA PARA EMPENHO", tipo_selecionado)
                         
                 is_special_dynamic = nova_dotacao and nova_dotacao.upper() in ["OP EXTRA"]
                 is_special_rubrica = norm_cell in rubricas_nao_empenhar
