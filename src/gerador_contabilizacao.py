@@ -6,8 +6,78 @@ import unicodedata
 import pandas as pd
 import openpyxl
 import logging
+import datetime
 
 logger = logging.getLogger(__name__)
+
+MESES_MAP = {
+    1: 'JANEIRO', 2: 'FEVEREIRO', 3: 'MARÇO', 4: 'ABRIL',
+    5: 'MAIO', 6: 'JUNHO', 7: 'JULHO', 8: 'AGOSTO',
+    9: 'SETEMBRO', 10: 'OUTUBRO', 11: 'NOVEMBRO', 12: 'DEZEMBRO'
+}
+
+NOMES_MESES = [
+    ('JANEIRO', 1), ('FEVEREIRO', 2), ('MARCO', 3), ('MARÇO', 3),
+    ('ABRIL', 4), ('MAIO', 5), ('JUNHO', 6), ('JULHO', 7),
+    ('AGOSTO', 8), ('SETEMBRO', 9), ('OUTUBRO', 10), ('NOVEMBRO', 11),
+    ('DEZEMBRO', 12),
+    ('JAN', 1), ('FEV', 2), ('MAR', 3), ('ABR', 4), ('MAI', 5),
+    ('JUN', 6), ('JUL', 7), ('AGO', 8), ('SET', 9), ('OUT', 10),
+    ('NOV', 11), ('DEZ', 12)
+]
+
+def extrair_mes_ano_nome_arquivo(nome_arquivo):
+    """
+    Extrai o mês e ano a partir do nome do arquivo (ex: 'FOLHA OUTUBRO 2026.pdf' -> 'OUTUBRO/2026').
+    """
+    if not nome_arquivo:
+        return None
+        
+    base = re.sub(r'\.[a-zA-Z0-9]+$', '', os.path.basename(str(nome_arquivo)))
+    norm = unicodedata.normalize('NFKD', base).encode('ASCII', 'ignore').decode('utf-8').upper()
+    
+    ano = None
+    match_ano = re.search(r'\b(20[2-3]\d)\b', norm)
+    if match_ano:
+        ano = int(match_ano.group(1))
+        
+    mes_num = None
+    for nome_m, num in NOMES_MESES:
+        norm_m = unicodedata.normalize('NFKD', nome_m).encode('ASCII', 'ignore').decode('utf-8').upper()
+        if re.search(r'(?<![A-Z0-9])' + norm_m + r'(?![A-Z0-9])', norm):
+            mes_num = num
+            break
+            
+    if not mes_num:
+        match_num = re.search(r'(?<!\d)(0?[1-9]|1[0-2])[._/-](20[2-3]\d|\d{2})(?!\d)', norm)
+        if match_num:
+            mes_num = int(match_num.group(1))
+            ano_cand = int(match_num.group(2))
+            if ano_cand < 100:
+                ano = 2000 + ano_cand
+            else:
+                ano = ano_cand
+        else:
+            match_inv = re.search(r'(?<!\d)(20[2-3]\d)[._/-](0?[1-9]|1[0-2])(?!\d)', norm)
+            if match_inv:
+                ano = int(match_inv.group(1))
+                mes_num = int(match_inv.group(2))
+            else:
+                match_mes_sozinho = re.search(r'(?:FOLHA|SMED|PAGAMENTO)[^\d]*(0?[1-9]|1[0-2])(?!\d)', norm)
+                if match_mes_sozinho:
+                    mes_num = int(match_mes_sozinho.group(1))
+                
+    if mes_num:
+        if not ano:
+            match_2dig = re.search(r'[\s_.-](\d{2})(?!\d)', norm)
+            if match_2dig:
+                val2 = int(match_2dig.group(1))
+                if 20 <= val2 <= 40:
+                    ano = 2000 + val2
+            if not ano:
+                ano = datetime.datetime.now().year
+        return f"{MESES_MAP[mes_num]}/{ano}"
+    return None
 
 CONFIG_BLOCOS = {
     "OUTROS SMED - EFETIVOS - CREDOR 105": {
@@ -100,6 +170,12 @@ CONFIG_BLOCOS = {
         "Dotacao_CCusto": "ED.INFANTIL PRE ESCOLA 30%",
         "Dotacao_Regime": "EFETIVO"
     },
+    "ED.INFANTIL PRE ESCOLA 30% - CONTRATADOS - CREDOR 543": {
+        "C.Custo": "082 - E.I. PRÉ-ESCOLA 30%",
+        "Regimes": ["009 - CONTRATO", "020 - PROFISSIONAL EDUCACAO (CONT.)"],
+        "Dotacao_CCusto": "ED.INFANTIL PRE ESCOLA 30%",
+        "Dotacao_Regime": "CONTRATADO"
+    },
     "ED.INFANTIL CRECHE 70% - EFETIVOS - CREDOR 105": {
         "C.Custo": "077 - E.I. CRECHE 70%",
         "Regimes": ["002 - EFETIVO", "015 - EFETIVO/COMISSIONADO", "019 - PROFISSIONAL EDUCACAO ( EST.)", "030 - PROF EDUCACAO EST./COMISSIONADO", "031 - PROF EDUCACAO EST./COMISSIONADO (CARREIRA)", "032 - EFETIVO/COMISSIONADO (CARREIRA)"],
@@ -117,6 +193,12 @@ CONFIG_BLOCOS = {
         "Regimes": ["002 - EFETIVO", "019 - PROFISSIONAL EDUCACAO ( EST.)", "030 - PROF EDUCACAO EST./COMISSIONADO"],
         "Dotacao_CCusto": "ED.INFANTIL CRECHE 30%",
         "Dotacao_Regime": "EFETIVO"
+    },
+    "ED.INFANTIL  CRECHE 30% - CONTRATADOS - CREDOR 543": {
+        "C.Custo": "076 - E.I. CRECHE 30%",
+        "Regimes": ["009 - CONTRATO", "020 - PROFISSIONAL EDUCACAO (CONT.)"],
+        "Dotacao_CCusto": "ED.INFANTIL CRECHE 30%",
+        "Dotacao_Regime": "CONTRATADO"
     },
     "EDUCAÇÃO ESPECIAL 70% EFETIVOS - CREDOR 105": {
         "C.Custo": "072 - EDUCAÇÃO ESPECIAL 70%",
@@ -200,7 +282,7 @@ def get_dotacao_value(dotacoes_json, ccusto, regime, natureza_planilha, tipo_dot
                 break
     return None
 
-def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_dotacoes_dict=None) -> bytes:
+def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_dotacoes_dict=None, nome_arquivo: str = None, competencia: str = None) -> bytes:
     if config_dotacoes_dict is None:
         config_dotacoes_dict = {}
     if isinstance(path_modelo, str):
@@ -208,6 +290,25 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
     else:
         wb = openpyxl.load_workbook(io.BytesIO(path_modelo))
     sheet = wb.active
+    
+    # Atualizar o mês/ano no cabeçalho superior da contabilização
+    if not competencia and nome_arquivo:
+        competencia = extrair_mes_ano_nome_arquivo(nome_arquivo)
+        
+    if competencia:
+        for r in range(1, 10):
+            for c in range(1, 6):
+                cell = sheet.cell(row=r, column=c)
+                val_str = str(cell.value or "")
+                if "CONTABILIZA" in val_str.upper() and "FOLHA" in val_str.upper():
+                    novo_val = re.sub(
+                        r'(CONTABILIZA.*?FOLHA\s+DE\s+PAGAMENTO\s*-\s*)([^\n\r]+)',
+                        rf'\g<1>{competencia}',
+                        val_str,
+                        flags=re.IGNORECASE
+                    )
+                    cell.value = novo_val
+                    break
     
     # Carregar detalhamento de dotações via JSON
     dotacoes_json = None
@@ -255,6 +356,19 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
             continue
             
         if in_block:
+            # Atualiza dinamicamente o campo "PAGO COM XXX" de acordo com o recurso selecionado para o bloco
+            if "PAGO COM" in str(cell_val).upper():
+                d_ccusto = current_block_config.get("Dotacao_CCusto")
+                d_regime = current_block_config.get("Dotacao_Regime")
+                if d_ccusto and d_regime:
+                    key = f"{d_ccusto.upper()}_{d_regime.upper()}"
+                    tipo_selecionado = config_dotacoes_dict.get(key, None)
+                    if tipo_selecionado:
+                        recurso = re.sub(r'^(PAGO\s+COM|DOTA[CÇ][AÃ]O)\s*', '', str(tipo_selecionado).strip(), flags=re.IGNORECASE).strip()
+                        if type(sheet.cell(row=row, column=1)).__name__ != 'MergedCell':
+                            sheet.cell(row=row, column=1).value = f"PAGO COM {recurso}"
+                continue
+
             dotacao_atual = sheet.cell(row=row, column=3).value
             manter_dotacao = False
             

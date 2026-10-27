@@ -5,6 +5,7 @@ import logging
 import streamlit as st
 import pandas as pd
 import importlib
+import datetime
 from dotenv import load_dotenv
 
 # Setup basic logging (OWASP A09: Security Logging and Monitoring Failures)
@@ -35,7 +36,7 @@ importlib.reload(src.gerar_consignados)
 from src.extrator_pdf import extrair_dados_pdf
 from src.classificador_rubricas import classificar_rubricas
 from src.gerador_excel import gerar_excel_extraido
-from src.gerador_contabilizacao import parse_and_fill_contabilizacao
+from src.gerador_contabilizacao import parse_and_fill_contabilizacao, extrair_mes_ano_nome_arquivo, MESES_MAP
 from src.gerar_consignados import gerar_consignados_excel
 
 # Garantir que as pastas existam
@@ -205,10 +206,54 @@ st.markdown("<p style='margin-bottom: 2rem;'>Faça upload do PDF consolidado da 
 
 uploaded_file = st.file_uploader("📥 Arraste ou selecione o PDF da folha", type=["pdf"])
 
+competencia_selecionada = ""
+if uploaded_file is not None:
+    if st.session_state.get('ultimo_arquivo_nome') != uploaded_file.name:
+        st.session_state['ultimo_arquivo_nome'] = uploaded_file.name
+        mes_ano_detectado = extrair_mes_ano_nome_arquivo(uploaded_file.name)
+        if not mes_ano_detectado:
+            agora = datetime.datetime.now()
+            mes_ano_detectado = f"{MESES_MAP.get(agora.month, 'MÊS')}/{agora.year}"
+        st.session_state['competencia_folha_input'] = mes_ano_detectado
+
+    competencia_selecionada = st.text_input(
+        "📅 Mês/Ano da Folha (Competência)",
+        value=st.session_state.get('competencia_folha_input', ''),
+        key='competencia_folha_input',
+        help="Extraído automaticamente do nome do arquivo enviado. Usado no cabeçalho da planilha de contabilização."
+    )
+
 st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("### ⚙️ Configuração de Dotações")
 st.markdown("Selecione a dotação para cada grupo. O sistema salvará suas escolhas.")
+
+DOTACOES_PADRAO_BLOCOS = {
+    ("OUTROS SMED", "EFETIVO"): "DOTAÇÃO EXTRA 25%",
+    ("OUTROS SMED", "CONTRATADO"): "DOTAÇÃO EXTRA 25%",
+    ("OUTROS SMED", "COMISSIONADOS"): "DOTAÇÃO EXTRA 25%",
+    ("OUTROS SMED", "AGENTE POLÍTICO"): "DOTAÇÃO EXTRA 25%",
+    ("RESTANTE DA SMED 30%", "COMISSIONADOS"): "DOTAÇÃO 25%",
+    ("RESTANTE DA SMED 30%", "EFETIVO"): "DOTAÇÃO FUNDEB",
+    ("RESTANTE DA SMED 30%", "CONTRATADO"): "DOTAÇÃO FUNDEB",
+    ("ED.FUNDAMENTAL 70%", "COMISSIONADOS"): "DOTAÇÃO FUNDEB",
+    ("ED.FUNDAMENTAL 70%", "EFETIVO"): "DOTAÇÃO FUNDEB",
+    ("ED.FUNDAMENTAL 70%", "CONTRATADO"): "DOTAÇÃO FUNDEB",
+    ("ENSINO FUNDAMENTAL 30%", "EFETIVO"): "DOTAÇÃO FUNDEB",
+    ("ENSINO FUNDAMENTAL 30%", "CONTRATADO"): "DOTAÇÃO FUNDEB",
+    ("ED.INFANTIL PRE ESCOLA 70%", "EFETIVO"): "DOTAÇÃO 25%",
+    ("ED.INFANTIL PRE ESCOLA 70%", "CONTRATADO"): "DOTAÇÃO 25%",
+    ("ED.INFANTIL PRE ESCOLA 30%", "EFETIVO"): "DOTAÇÃO FUNDEB",
+    ("ED.INFANTIL PRE ESCOLA 30%", "CONTRATADO"): "DOTAÇÃO FUNDEB",
+    ("ED.INFANTIL CRECHE 70%", "EFETIVO"): "DOTAÇÃO FUNDEB",
+    ("ED.INFANTIL CRECHE 70%", "CONTRATADO"): "DOTAÇÃO FUNDEB",
+    ("ED.INFANTIL CRECHE 30%", "EFETIVO"): "DOTAÇÃO FUNDEB",
+    ("ED.INFANTIL CRECHE 30%", "CONTRATADO"): "DOTAÇÃO FUNDEB",
+    ("EDUCAÇÃO ESPECIAL 70%", "EFETIVO"): "DOTAÇÃO FUNDEB",
+    ("EDUCAÇÃO ESPECIAL 70%", "CONTRATADO"): "DOTAÇÃO FUNDEB",
+    ("EJA 70%", "EFETIVO"): "DOTAÇÃO FUNDEB",
+    ("EJA 70%", "CONTRATADO"): "DOTAÇÃO FUNDEB",
+}
 
 if 'dotacoes_keys' not in st.session_state:
     seen = set()
@@ -227,17 +272,22 @@ config_dotacoes_dict = {}
 
 with st.expander("📋 Abrir Painel de Dotações por Bloco", expanded=True):
     keys = st.session_state['dotacoes_keys']
+    opcoes_dotacao = ["DOTAÇÃO 25%", "DOTAÇÃO FUNDEB", "DOTAÇÃO EXTRA 25%"]
     
     for i, (dc, dr) in enumerate(keys):
         ss_key = f"dotacao_{dc}_{dr}"
         
-        # Padrão
+        # Padrão inteligente baseado no modelo original
         if ss_key not in st.session_state:
-            st.session_state[ss_key] = "DOTAÇÃO 25%"
+            st.session_state[ss_key] = DOTACOES_PADRAO_BLOCOS.get((dc, dr), "DOTAÇÃO 25%")
             
+        valor_atual = st.session_state.get(ss_key, "DOTAÇÃO 25%")
+        idx_padrao = opcoes_dotacao.index(valor_atual) if valor_atual in opcoes_dotacao else 0
+        
         selecao = st.selectbox(
             f"{dc} | {dr}",
-            ["DOTAÇÃO 25%", "DOTAÇÃO FUNDEB", "DOTAÇÃO EXTRA 25%"],
+            opcoes_dotacao,
+            index=idx_padrao,
             key=ss_key
         )
         config_dotacoes_dict[f"{dc.strip().upper()}_{dr.strip().upper()}"] = selecao
@@ -323,7 +373,14 @@ if st.button("🚀 Iniciar Processamento", use_container_width=True):
                             modelo_source = 'modelo_contabilização.xlsx'
                             
                         # O config_dotacoes_dict já é gerado em tempo real no laço do UI acima.
-                        contabilizacao_bytes = parse_and_fill_contabilizacao(df_resumo, modelo_source, config_dotacoes_dict)
+                        comp_final = competencia_selecionada or st.session_state.get('competencia_folha_input')
+                        contabilizacao_bytes = parse_and_fill_contabilizacao(
+                            df_resumo,
+                            modelo_source,
+                            config_dotacoes_dict,
+                            nome_arquivo=uploaded_file.name,
+                            competencia=comp_final
+                        )
                         contabilizacao_filename = safe_filename.replace('.pdf', '.PDF').replace('.PDF', '_contabilizacao.xlsx')
                         contabilizacao_path = os.path.join("outputs", contabilizacao_filename)
                         
