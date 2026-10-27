@@ -236,7 +236,7 @@ NATUREZA_MAP = {
     'FÉRIAS 1/3  (ABONO CONSTITUCIONAL)': 'FÉRIAS - ABONO CONSTITUCIONAL',
     'PARCELA PROP. (13ºSLR)': '13º SALÁRIO',
     'HORA EXTRA': 'HORA EXTRA',
-    'INDENIZ. E RESTITUIÇÕES TRAB.': 'IDENIZAÇÕES E RESTITUIÇÕES',
+    'INDENIZ. E RESTITUIÇÕES TRAB.': 'INDENIZAÇÕES E RESTITUIÇÕES',
     'AUXÍLIO NATALIDADE': 'AUXÍLIO NATALIDADE',
     'RESSARCIMENTO': 'RESSARCIMENTO',
     'DEDUÇÃO ART. 37, X': 'DEDUÇÃO ART. 37, X',
@@ -269,6 +269,8 @@ def get_dotacao_value(dotacoes_json, ccusto, regime, natureza_planilha, tipo_dot
         'AFASTMATERNIDADESALMATERN': 'AFASTAMENTOMATERNIDADE',
         'AFASTMATERNIDADEINSSCONTR': 'AFASTAMENTOMATERNIDADE',
         'SALARIOFAMILIAINSSCONTR': 'SALARIOFAMILIA',
+        'INDENIZACOESERESTITUICOES': 'INDENIZERESTITUICOESTRAB',
+        'IDENIZACOESERESTITUICOES': 'INDENIZERESTITUICOESTRAB',
     }
     natureza_busca = alias_map.get(natureza_norm, natureza_norm)
     
@@ -485,7 +487,10 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
             # Else, see if it's a known mapped row
             if norm_cell in natureza_map_norm:
                 expected_nat = natureza_map_norm[norm_cell]
-                val_nat = current_block_df[current_block_df['Natureza'] == expected_nat]['Valor'].sum()
+                if expected_nat == 'INDENIZAÇÕES E RESTITUIÇÕES':
+                    val_nat = current_block_df[current_block_df['Natureza'].isin(['INDENIZAÇÕES E RESTITUIÇÕES', 'IDENIZAÇÕES E RESTITUIÇÕES'])]['Valor'].sum()
+                else:
+                    val_nat = current_block_df[current_block_df['Natureza'] == expected_nat]['Valor'].sum()
                 
                 nova_dotacao = None
                 if dotacoes_json is not None:
@@ -519,6 +524,8 @@ def parse_and_fill_contabilizacao(df_resumo: pd.DataFrame, path_modelo, config_d
                 if val_nat > 0:
                     sheet.cell(row=row, column=2).value = val_nat
                     mapped_naturezas_in_block.add(expected_nat)
+                    if expected_nat == 'INDENIZAÇÕES E RESTITUIÇÕES':
+                        mapped_naturezas_in_block.add('IDENIZAÇÕES E RESTITUIÇÕES')
                     
                     if is_special_rubrica:
                         pass # Já forçado no início do bloco
